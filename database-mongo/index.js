@@ -1,6 +1,5 @@
-const request = require("request");
 var mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost/test");
+mongoose.connect("mongodb://localhost/cards");
 
 var db = mongoose.connection;
 
@@ -31,4 +30,12 @@ var getDeck = function (callback) {
   });
 };
 
-module.exports.selectAll = getDeck;
+const saveCards = (deck) => {
+  deck.forEach((card) => {
+    current = new Card(card);
+    current.save();
+  });
+};
+
+module.exports.getDeck = getDeck;
+module.exports.saveCards = saveCards;
