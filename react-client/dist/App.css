@@ -6,3 +6,11 @@ body {
 .emptyPile {
   background-color: #163d17;
 }
+
+.drawStack {
+  border-radius: 5%;
+}
+
+/* .cardStack {
+  position: sticky;
+} */
