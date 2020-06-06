@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
-const ListItem = (props) => (
-  <div>
-    { props.card.image }
+const Card = (props) => (
+  <div className="container-sm">
+    <img src={props.card.image} />
   </div>
-)
+);
 
-export default ListItem;
+export default Card;
