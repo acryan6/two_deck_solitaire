@@ -1,7 +1,7 @@
 import React from "react";
 
 const Card = (props) => (
-  <div className="container-sm">
+  <div>
     <img src={props.card.image} />
   </div>
 );

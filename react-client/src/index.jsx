@@ -8,19 +8,19 @@ class App extends React.Component {
     super(props);
     this.state = {
       cards: [],
-      A: [],
-      2: [],
-      3: [],
-      4: [],
-      5: [],
-      6: [],
-      7: [],
-      8: [],
-      9: [],
-      10: [],
-      J: [],
-      Q: [],
-      K: [],
+      pile_A: [],
+      pile_2: [],
+      pile_3: [],
+      pile_4: [],
+      pile_5: [],
+      pile_6: [],
+      pile_7: [],
+      pile_8: [],
+      pile_9: [],
+      pile_10: [],
+      pile_J: [],
+      pile_Q: [],
+      pile_K: [],
       drawStack: [],
     };
   }
@@ -31,20 +31,20 @@ class App extends React.Component {
       .then((data) => {
         this.setState({
           cards: data,
-          A: data.slice(0, 3),
-          1: data.slice(3, 6),
-          2: data.slice(6, 9),
-          3: data.slice(12, 15),
-          4: data.slice(15, 18),
-          5: data.slice(18, 21),
-          6: data.slice(21, 24),
-          7: data.slice(24, 27),
-          8: data.slice(27, 30),
-          9: data.slice(30, 33),
-          10: data.slice(33, 36),
-          J: data.slice(36, 39),
-          Q: data.slice(39, 42),
-          K: data.slice(42, 45),
+          pile_A: data.slice(0, 3),
+          pile_1: data.slice(3, 6),
+          pile_2: data.slice(6, 9),
+          pile_3: data.slice(12, 15),
+          pile_4: data.slice(15, 18),
+          pile_5: data.slice(18, 21),
+          pile_6: data.slice(21, 24),
+          pile_7: data.slice(24, 27),
+          pile_8: data.slice(27, 30),
+          pile_9: data.slice(30, 33),
+          pile_10: data.slice(33, 36),
+          pile_J: data.slice(36, 39),
+          pile_Q: data.slice(39, 42),
+          pile_K: data.slice(42, 45),
           drawStack: data.slice(45, 52),
         });
       })
@@ -56,7 +56,22 @@ class App extends React.Component {
       <div>
         <h1>Mini-Moo</h1>
         <h3>A Form of Devil's Solitaire(?)</h3>
-        <Board cards={this.state.cards} />
+        <Board
+          pile_A={this.state.pile_A}
+          pile_2={this.state.pile_2}
+          pile_3={this.state.pile_3}
+          pile_4={this.state.pile_4}
+          pile_5={this.state.pile_5}
+          pile_6={this.state.pile_6}
+          pile_7={this.state.pile_7}
+          pile_8={this.state.pile_8}
+          pile_9={this.state.pile_9}
+          pile_10={this.state.pile_10}
+          pile_J={this.state.pile_J}
+          pile_Q={this.state.pile_Q}
+          pile_K={this.state.pile_K}
+          drawStack={this.state.drawStack}
+        />
       </div>
     );
   }

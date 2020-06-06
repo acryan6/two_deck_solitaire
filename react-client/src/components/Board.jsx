@@ -1,18 +1,89 @@
 import React from "react";
 import Card from "./Card.jsx";
-import CardBack from "./Card_back.png";
+import Drawstack from "./Card_back.png";
 
 const Board = (props) => (
-  <div className="container">
-    {/* <AggregatePile /> */}
-    There are {props.cards.length} cards.
-    {props.cards.map((card) => (
-      <Card card={card} />
-    ))}
-    <div className="container">
-      <img src={CardBack} />
+  <div className="container-fluid">
+    <div className="row">
+      <div className="col-sm">
+        {props.pile_A.map((card) => (
+          <Card card={card} />
+        ))}
+      </div>
+      <div className="col-sm">
+        {props.pile_2.map((card) => (
+          <Card card={card} />
+        ))}
+      </div>
+      <div className="col-sm">
+        {props.pile_3.map((card) => (
+          <Card card={card} />
+        ))}
+      </div>
+      <div className="col-sm">
+        {props.pile_4.map((card) => (
+          <Card card={card} />
+        ))}
+      </div>
+      <div className="col-sm">
+        {props.pile_5.map((card) => (
+          <Card card={card} />
+        ))}
+      </div>
+      <div className="col-sm">
+        {props.pile_6.map((card) => (
+          <Card card={card} />
+        ))}
+      </div>
+      <div className="col-sm">
+        {props.pile_7.map((card) => (
+          <Card card={card} />
+        ))}
+      </div>
+    </div>
+    <div className="row">
+      <div className="col-sm">
+        {props.pile_8.map((card) => (
+          <Card card={card} />
+        ))}
+      </div>
+      <div className="col-sm">
+        {props.pile_9.map((card) => (
+          <Card card={card} />
+        ))}
+      </div>
+      <div className="col-sm">
+        {props.pile_10.map((card) => (
+          <Card card={card} />
+        ))}
+      </div>
+      <div className="col-sm ">
+        <img src={Drawstack} />
+      </div>
+      <div className="col-sm">
+        {props.pile_J.map((card) => (
+          <Card card={card} />
+        ))}
+      </div>
+      <div className="col-sm">
+        {props.pile_Q.map((card) => (
+          <Card card={card} />
+        ))}
+      </div>
+      <div className="col-sm">
+        {props.pile_K.map((card) => (
+          <Card card={card} />
+        ))}
+      </div>
     </div>
   </div>
 );
 
 export default Board;
+// {/* {props.cards.map((card) => (
+//       <Card card={card} />
+//     ))}
+//     <div className="container-sm">
+//       <img src={Drawstack} />
+//     </div>
+//   </div> */}
