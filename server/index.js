@@ -9,21 +9,17 @@ app.use(express.static(__dirname + "/../react-client/dist"));
 
 app.get("/api/cards", function (req, res) {
   request("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
+    .then((res) => JSON.parse(res))
     .then((deck) => {
-      console.log(deck);
       return request(
         `https://deckofcardsapi.com/api/deck/${deck.deck_id}/draw/?count=52`
       );
     })
-    .then();
-
-  db.getDeck(function (err, data) {
-    if (err) {
-      res.sendStatus(500);
-    } else {
-      res.json(data);
-    }
-  });
+    .then((res) => JSON.parse(res))
+    .then((deck) => {
+      res.send(JSON.stringify(deck));
+    })
+    .catch((err) => console.log(err));
 });
 
 app.post("/api/cards", async (req, res) => {
@@ -36,7 +32,6 @@ app.post("/api/cards", async (req, res) => {
     })
     .then((res) => JSON.parse(res))
     .then((deck) => {
-      console.log(deck);
       db.saveCards(deck.cards);
     })
     .then(() => {
