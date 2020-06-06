@@ -17,7 +17,7 @@ app.get("/api/cards", function (req, res) {
     })
     .then((res) => JSON.parse(res))
     .then((deck) => {
-      res.send(JSON.stringify(deck));
+      res.send(JSON.stringify(deck.cards));
     })
     .catch((err) => console.log(err));
 });
