@@ -54,9 +54,20 @@ class App extends React.Component {
     return (
       // <DndProvider backend={HTML5Backend}>
       <div>
-        <h1>Mini-Moo</h1>
-        <h3>A Form of Devil's Solitaire(?)</h3>
-        <Aggregate />
+        <div className="container">
+          <div className="row">
+            <div className="col-sm">
+              <h1>Mini-Moo</h1>
+              <h3>A Form of Devil's Solitaire(?)</h3>
+            </div>
+            <div className="col-sm">
+              <Aggregate />
+            </div>
+
+          </div>
+
+        </div>
+
         <Board
           pile_A={this.state.pile_A}
           pile_2={this.state.pile_2}

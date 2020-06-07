@@ -10,10 +10,12 @@ class Aggregate extends Component {
   render() {
     return (
       <div className="container">
-        <div className="hearts emptyPile"></div>
-        <div className="clubs emptyPile"></div>
-        <div className="diamonds emptyPile"></div>
-        <div className="spades emptyPile"></div>
+        <div className="row">
+          <div className="hearts emptyPile col-sm"></div>
+          <div className="clubs emptyPile col-sm"></div>
+          <div className="diamonds emptyPile col-sm"></div>
+          <div className="spades emptyPile col-sm"></div>
+        </div>
       </div>
     )
   }
