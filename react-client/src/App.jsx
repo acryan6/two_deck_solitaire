@@ -1,5 +1,8 @@
 import React from "react";
 import Board from './components/Board.jsx';
+import Aggregate from "./components/Aggregate.jsx";
+// import { DndProvider } from 'react-dnd';
+// import { HTML5Backend } from 'react-dnd-html5-backend';
 
 class App extends React.Component {
   constructor(props) {
@@ -29,21 +32,19 @@ class App extends React.Component {
       .then((data) => {
         this.setState({
           cards: data,
-          pile_A: data.slice(0, 3),
-          pile_1: data.slice(3, 6),
-          pile_2: data.slice(6, 9),
-          pile_3: data.slice(12, 15),
-          pile_4: data.slice(15, 18),
-          pile_5: data.slice(18, 21),
-          pile_6: data.slice(21, 24),
-          pile_7: data.slice(24, 27),
-          pile_8: data.slice(27, 30),
-          pile_9: data.slice(30, 33),
-          pile_10: data.slice(33, 36),
-          pile_J: data.slice(36, 39),
-          pile_Q: data.slice(39, 42),
-          pile_K: data.slice(42, 45),
-          drawStack: data.slice(45, 52),
+          pile_A: data.slice(0, 4),
+          pile_2: data.slice(4, 8),
+          pile_3: data.slice(8, 12),
+          pile_4: data.slice(12, 16),
+          pile_5: data.slice(16, 20),
+          pile_6: data.slice(20, 24),
+          pile_7: data.slice(24, 28),
+          pile_8: data.slice(28, 32),
+          pile_9: data.slice(32, 36),
+          pile_10: data.slice(36, 40),
+          pile_J: data.slice(40, 44),
+          pile_Q: data.slice(44, 48),
+          pile_K: data.slice(48, 52),
         });
       })
       .catch((err) => console.log(err));
@@ -51,9 +52,11 @@ class App extends React.Component {
 
   render() {
     return (
+      // <DndProvider backend={HTML5Backend}>
       <div>
         <h1>Mini-Moo</h1>
         <h3>A Form of Devil's Solitaire(?)</h3>
+        <Aggregate />
         <Board
           pile_A={this.state.pile_A}
           pile_2={this.state.pile_2}
@@ -71,6 +74,7 @@ class App extends React.Component {
           drawStack={this.state.drawStack}
         />
       </div>
+      // </DndProvider>
     );
   }
 }

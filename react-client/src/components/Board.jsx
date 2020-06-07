@@ -58,7 +58,7 @@ const Board = (props) => (
         ))}
       </div>
       <div className="col-sm cardStack">
-        <img src={Drawstack} className="drawStack" />
+        <img src={Drawstack} className="drawStack" height="26%" />
       </div>
       <div className="col-sm cardStack">
         {props.pile_J.map((card) => (
