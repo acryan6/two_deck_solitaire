@@ -1,8 +1,15 @@
 import React from "react";
 
 const Card = (props) => (
-  <div>
-    <img src={props.card.image} width="70%" height="70%" />
+  <div onDoubleClick={props.handleDoubleClick}>
+    <img
+      src={props.card.image}
+      title={props.card.code}
+      width="70%"
+      height="70%"
+      alt={`Image of the ${props.card.value.toLowerCase()} of ${props.card.suit.toLowerCase()} card`}
+      name={props.name}
+    />
   </div>
 );
 

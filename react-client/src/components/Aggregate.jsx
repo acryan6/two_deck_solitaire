@@ -11,10 +11,10 @@ class Aggregate extends Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="hearts emptyPile col-sm"></div>
-          <div className="clubs emptyPile col-sm"></div>
-          <div className="diamonds emptyPile col-sm"></div>
-          <div className="spades emptyPile col-sm"></div>
+          <div className="hearts col-sm emptyPile"></div>
+          <div className="clubs col-sm emptyPile"></div>
+          <div className="diamonds col-sm emptyPile"></div>
+          <div className="spades col-sm emptyPile"></div>
         </div>
       </div>
     )

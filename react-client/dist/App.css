@@ -3,11 +3,22 @@ body {
   color: #fff;
 }
 
+.top-bar {
+  margin-top: 100px;
+  margin-bottom: 50px;
+  max-width: 1500px;
+}
+
+.title-block {
+  max-width: 400px;
+}
+
 .emptyPile {
   background-color: #0c410f;
-  height: 150px;
-  width: 80px;
+  height: 236px;
+  width: 170px;
   border-radius: 5%;
+  margin: 0 48px;
 }
 
 .drawStack {
