@@ -3,7 +3,7 @@ import Board from './components/Board.jsx';
 import Aggregate from "./components/Aggregate.jsx";
 // import { DndProvider } from 'react-dnd';
 // import { HTML5Backend } from 'react-dnd-html5-backend';
-const order = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "0", "J", "Q", "K"];
+const order = ["ACE", "2", "3", "4", "5", "6", "7", "8", "9", "10", "JACK", "QUEEN", "KING"];
 
 class App extends React.Component {
   constructor(props) {
@@ -58,38 +58,26 @@ class App extends React.Component {
   }
 
   handleDoubleClick(e) {
+    console.log(e.target.title)
     let pile = e.target.name;
-    let suit = e.target.title[1];
-    let value = e.target.title[0];
-    console.log(pile, suit, value, this.state.hearts.length)
-    if (suit === 'H') {
-      if (this.state.hearts.length === 0 && value === 'A') {
-        let statePile = this.state[`pile_${pile}`]
-        for (let i = 0; i < statePile.length; i++) {
-          if (statePile[i].code[0] === value) {
-            const card = statePile.splice(i, 1);
-            this.setState({
-              hearts: card
-            });
-          }
-        }
-      } else if (this.state.hearts.length > 0 && value === order[this.state.hearts.length]) {
-        let statePile = this.state[`pile_${pile}`]
-        for (let i = 0; i < statePile.length; i++) {
-          if (statePile[i].code[0] === value) {
-            const card = statePile.splice(i, 1);
-            this.setState({
-              hearts: [...this.state.hearts, card]
-            });
-          }
-        }
+    let suit = e.target.title.split(' ')[1].toLowerCase();
+    let value = e.target.title.split(' ')[0];
+    let code = e.target.title.split(' ')[2];
+    // if ((this.state[suit].length === 0 && value === 'A') || (this.state[suit].length > 0 && value === order[this.state[suit].length])) {
+    if (value === order[this.state[suit].length]) {
+      this.getAndSetCard(suit, value, pile, code);
+    }
+  }
+
+  getAndSetCard(suit, value, pile, code) {
+    let statePile = this.state[`pile_${pile}`]
+    for (let i = 0; i < statePile.length; i++) {
+      if (statePile[i].code === code) {
+        const card = statePile.splice(i, 1);
+        this.setState({
+          [suit]: [...this.state[suit], card]
+        });
       }
-    } else if (suit === 'C') {
-
-    } else if (suit === 'D') {
-
-    } else if (suit === 'S') {
-
     }
   }
 
