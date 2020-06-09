@@ -5,8 +5,8 @@ const Card = (props) => (
     <img
       src={props.card.image}
       title={`${props.card.value} ${props.card.suit} ${props.card.code}`}
-      width="70%"
-      height="70%"
+      height={props.name ? "70%" : "120%"}
+      width={props.name ? "70%" : "120%"}
       alt={`Image of the ${props.card.value.toLowerCase()} of ${props.card.suit.toLowerCase()} card`}
       name={props.name}
     />

@@ -73,10 +73,12 @@ class App extends React.Component {
     let statePile = this.state[`pile_${pile}`]
     for (let i = 0; i < statePile.length; i++) {
       if (statePile[i].code === code) {
-        const card = statePile.splice(i, 1);
+        const card = statePile.splice(i, 1)[0];
+        card.name = "aggregate-pile";
+        console.log(card)
         this.setState({
           [suit]: [...this.state[suit], card]
-        });
+        }, () => console.log(this.state[suit][0].name));
       }
     }
   }
@@ -92,7 +94,12 @@ class App extends React.Component {
               <h3>A Form of Devil's Solitaire(?)</h3>
             </div>
             <div className="col-sm">
-              <Aggregate />
+              <Aggregate
+                hearts={this.state.hearts}
+                diamonds={this.state.diamonds}
+                clubs={this.state.clubs}
+                spades={this.state.spades}
+              />
             </div>
           </div>
         </div>

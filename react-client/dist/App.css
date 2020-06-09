@@ -13,13 +13,23 @@ body {
   max-width: 400px;
 }
 
-.emptyPile {
+.empty-pile {
   background-color: #0c410f;
   height: 236px;
   width: 170px;
   border-radius: 5%;
   margin: 0 48px;
 }
+
+/* .aggregate-card {
+  height: 115%;
+  width: 115%;
+}
+
+.board-card {
+  height: 70%;
+  width: 70%;
+} */
 
 .drawStack {
   border-radius: 5%;
