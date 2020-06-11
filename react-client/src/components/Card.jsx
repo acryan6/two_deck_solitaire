@@ -9,6 +9,7 @@ const Card = (props) => (
       width={props.name ? "70%" : "120%"}
       alt={`Image of the ${props.card.value.toLowerCase()} of ${props.card.suit.toLowerCase()} card`}
       name={props.name}
+      style={{ zIndex: props.index, position: "absolute" }}
     />
   </div>
 );

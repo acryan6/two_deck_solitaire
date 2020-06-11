@@ -21,19 +21,15 @@ body {
   margin: 0 48px;
 }
 
-/* .aggregate-card {
-  height: 115%;
-  width: 115%;
+.board-row {
+  height: 314px;
+  max-height: 314px;
 }
-
-.board-card {
-  height: 70%;
-  width: 70%;
-} */
 
 .drawStack {
   border-radius: 5%;
-
+  height: 314px;
+  max-height: 314px;
 }
 
 /* .cardStack {
