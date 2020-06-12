@@ -1,6 +1,7 @@
 import React from "react";
 import Board from "./components/Board.jsx";
 import Aggregate from "./components/Aggregate.jsx";
+import Card from "./components/Card.jsx";
 // import { DndProvider } from 'react-dnd';
 // import { HTML5Backend } from 'react-dnd-html5-backend';
 const order = [
@@ -41,10 +42,12 @@ class App extends React.Component {
       clubs: [],
       diamonds: [],
       spades: [],
-      // order: ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"]
+      showHand: false,
+      hand: null,
     };
     this.handleDoubleClick = this.handleDoubleClick.bind(this);
     this.handleDrawStack = this.handleDrawStack.bind(this);
+    this.handleHand = this.handleHand.bind(this);
   }
 
   componentDidMount() {
@@ -73,6 +76,16 @@ class App extends React.Component {
       .catch((err) => console.log(err));
   }
 
+  handleHand(e) {
+    console.log(e.target);
+    let pile = this.state.hand;
+    let suit = e.target.title.split(" ")[1].toLowerCase();
+    let value = e.target.title.split(" ")[0];
+    let code = e.target.title.split(" ")[2];
+    console.log(pile, suit, value, code);
+    this.state[pile].forEach((card) => {});
+  }
+
   handleDoubleClick(e) {
     console.log(e.target.title);
     let pile = e.target.name;
@@ -91,7 +104,6 @@ class App extends React.Component {
       if (statePile[i].code === code) {
         const card = statePile.splice(i, 1)[0];
         card.name = "aggregate-pile";
-        console.log(card);
         this.setState(
           {
             [suit]: [...this.state[suit], card],
@@ -112,6 +124,8 @@ class App extends React.Component {
     this.setState({
       drawStack: newDrawStack,
       [`pile_${val}`]: [...this.state[`pile_${val}`], draw],
+      showHand: true,
+      hand: `pile_${val}`,
     });
   }
 
@@ -135,6 +149,17 @@ class App extends React.Component {
             </div>
           </div>
         </div>
+        {this.state.showHand ? (
+          <div className="container">
+            <div className="row hand-row">
+              {this.state[this.state.hand].map((card) => (
+                <div className="col-sm hand">
+                  <Card card={card} handleDoubleClick={this.handleHand} />
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : null}
         <Board
           pile_A={this.state.pile_A}
           pile_2={this.state.pile_2}

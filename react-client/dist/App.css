@@ -33,6 +33,17 @@ body {
   padding-left: inherit;
 }
 
+.hand-row {
+  justify-content: center;
+  padding-bottom: 50px;
+}
+
+.hand {
+  height: 220px;
+  max-width: 190px;
+  padding-bottom: 50px;
+}
+
 /* .cardStack {
   position: sticky;
 } */
