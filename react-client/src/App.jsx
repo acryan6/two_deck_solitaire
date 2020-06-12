@@ -1,9 +1,23 @@
 import React from "react";
-import Board from './components/Board.jsx';
+import Board from "./components/Board.jsx";
 import Aggregate from "./components/Aggregate.jsx";
 // import { DndProvider } from 'react-dnd';
 // import { HTML5Backend } from 'react-dnd-html5-backend';
-const order = ["ACE", "2", "3", "4", "5", "6", "7", "8", "9", "10", "JACK", "QUEEN", "KING"];
+const order = [
+  "ACE",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "10",
+  "JACK",
+  "QUEEN",
+  "KING",
+];
 
 class App extends React.Component {
   constructor(props) {
@@ -30,6 +44,7 @@ class App extends React.Component {
       // order: ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"]
     };
     this.handleDoubleClick = this.handleDoubleClick.bind(this);
+    this.handleDrawStack = this.handleDrawStack.bind(this);
   }
 
   componentDidMount() {
@@ -39,30 +54,31 @@ class App extends React.Component {
         console.log(data);
         this.setState({
           cards: data,
-          pile_A: data.slice(0, 4),
-          pile_2: data.slice(4, 8),
-          pile_3: data.slice(8, 12),
-          pile_4: data.slice(12, 16),
-          pile_5: data.slice(16, 20),
-          pile_6: data.slice(20, 24),
-          pile_7: data.slice(24, 28),
-          pile_8: data.slice(28, 32),
-          pile_9: data.slice(32, 36),
-          pile_0: data.slice(36, 40),
-          pile_J: data.slice(40, 44),
-          pile_Q: data.slice(44, 48),
-          pile_K: data.slice(48, 52),
+          pile_A: data.slice(0, 3),
+          pile_2: data.slice(3, 6),
+          pile_3: data.slice(6, 9),
+          pile_4: data.slice(9, 12),
+          pile_5: data.slice(12, 15),
+          pile_6: data.slice(15, 18),
+          pile_7: data.slice(18, 21),
+          pile_8: data.slice(21, 24),
+          pile_9: data.slice(24, 27),
+          pile_0: data.slice(27, 30),
+          pile_J: data.slice(30, 33),
+          pile_Q: data.slice(33, 36),
+          pile_K: data.slice(36, 39),
+          drawStack: data.slice(39, 52),
         });
       })
       .catch((err) => console.log(err));
   }
 
   handleDoubleClick(e) {
-    console.log(e.target.title)
+    console.log(e.target.title);
     let pile = e.target.name;
-    let suit = e.target.title.split(' ')[1].toLowerCase();
-    let value = e.target.title.split(' ')[0];
-    let code = e.target.title.split(' ')[2];
+    let suit = e.target.title.split(" ")[1].toLowerCase();
+    let value = e.target.title.split(" ")[0];
+    let code = e.target.title.split(" ")[2];
     // if ((this.state[suit].length === 0 && value === 'A') || (this.state[suit].length > 0 && value === order[this.state[suit].length])) {
     if (value === order[this.state[suit].length]) {
       this.getAndSetCard(suit, value, pile, code);
@@ -70,17 +86,33 @@ class App extends React.Component {
   }
 
   getAndSetCard(suit, value, pile, code) {
-    let statePile = this.state[`pile_${pile}`]
+    let statePile = this.state[`pile_${pile}`];
     for (let i = 0; i < statePile.length; i++) {
       if (statePile[i].code === code) {
         const card = statePile.splice(i, 1)[0];
         card.name = "aggregate-pile";
-        console.log(card)
-        this.setState({
-          [suit]: [...this.state[suit], card]
-        }, () => console.log(this.state[suit][0].name));
+        console.log(card);
+        this.setState(
+          {
+            [suit]: [...this.state[suit], card],
+          },
+          () => console.log(this.state[suit][0].name)
+        );
       }
     }
+  }
+
+  handleDrawStack() {
+    let draw = this.state.drawStack[this.state.drawStack.length - 1];
+    let val = draw.code[0];
+    let newDrawStack = this.state.drawStack.slice(
+      0,
+      this.state.drawStack.length - 1
+    );
+    this.setState({
+      drawStack: newDrawStack,
+      [`pile_${val}`]: [...this.state[`pile_${val}`], draw],
+    });
   }
 
   render() {
@@ -119,6 +151,7 @@ class App extends React.Component {
           pile_K={this.state.pile_K}
           drawStack={this.state.drawStack}
           handleDoubleClick={this.handleDoubleClick}
+          handleDrawStack={this.handleDrawStack}
           order={this.state.order}
         />
       </div>

@@ -28,8 +28,9 @@ body {
 
 .drawStack {
   border-radius: 5%;
-  height: 314px;
-  max-height: 314px;
+  height: 220px;
+  max-height: 220px;
+  padding-left: inherit;
 }
 
 /* .cardStack {

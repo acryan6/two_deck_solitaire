@@ -107,7 +107,7 @@ const Board = (props) => (
           />
         ))}
       </div>
-      <div className="col-sm cardStack">
+      <div className="col-sm cardStack" onDoubleClick={props.handleDrawStack}>
         <img src={Drawstack} className="drawStack" height="26%" />
       </div>
       <div className="col-sm cardStack">
