@@ -24,6 +24,7 @@ body {
 .board-row {
   height: 314px;
   max-height: 314px;
+  justify-content: center;
 }
 
 .drawStack {
@@ -44,6 +45,6 @@ body {
   padding-bottom: 50px;
 }
 
-/* .cardStack {
-  position: sticky;
-} */
+.cardStack {
+  max-width: 250px;
+}

@@ -91,7 +91,9 @@ class App extends React.Component {
         drawCount++;
       }
       for (let j = i + 1; j < i + 1 + drawCount; j++) {
-        addDraw.push(deck[j]);
+        if (deck[j]) {
+          addDraw.push(deck[j]);
+        }
       }
       await this.setState({
         [`pile_${pile}`]: [...this.state[`pile_${pile}`], deck[i]],
@@ -154,6 +156,7 @@ class App extends React.Component {
   }
 
   handleDrawStack() {
+    console.log(this.state.drawStack);
     let draw = this.state.drawStack[this.state.drawStack.length - 1];
     let val = draw.code[0];
     let newDrawStack = this.state.drawStack.slice(
