@@ -4,7 +4,7 @@ import { useDrop } from "react-dnd";
 import { ItemTypes } from "../../../utils/items";
 
 const Aggregate = (props) => {
-  const [{ addedProps }, drop] = useDrop({
+  const [{ isOver }, drop] = useDrop({
     accept: ItemTypes.CARD,
     drop: (item, monitor) => props.handleDrop(item),
     collect: (monitor) => ({

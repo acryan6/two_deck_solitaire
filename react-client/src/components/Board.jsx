@@ -5,7 +5,7 @@ import Drawstack from "./Card_back.png";
 const Board = (props) => (
   <div className="container-fluid">
     <div className="row board-row">
-      <div className="col-sm cardStack">
+      <div className="col-sm cardStack empty-board-pile">
         {props.pile_A.map((card, index) => (
           <Card
             card={card}

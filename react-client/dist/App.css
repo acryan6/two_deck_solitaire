@@ -13,17 +13,28 @@ body {
   max-width: 400px;
 }
 
+.cardStack {
+  max-width: 250px;
+}
 .empty-pile {
   background-color: #0c410f;
   height: 236px;
-  width: 170px;
+  max-width: 170px;
+  border-radius: 5%;
+  margin: 0 48px;
+}
+
+.empty-board-pile {
+  background-color: #0c410f;
+  height: 150px;
+  max-width: 170px;
   border-radius: 5%;
   margin: 0 48px;
 }
 
 .board-row {
-  height: 314px;
-  max-height: 314px;
+  height: 250px;
+  max-height: 250px;
   justify-content: center;
 }
 
@@ -43,8 +54,4 @@ body {
   height: 220px;
   max-width: 190px;
   padding-bottom: 50px;
-}
-
-.cardStack {
-  max-width: 250px;
 }
