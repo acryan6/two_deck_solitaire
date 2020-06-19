@@ -15,7 +15,7 @@ const Board = (props) => (
           />
         ))}
       </div>
-      <div className="col-sm cardStack">
+      <div className="col-sm cardStack empty-board-pile">
         {props.pile_2.map((card, index) => (
           <Card
             card={card}
@@ -25,7 +25,7 @@ const Board = (props) => (
           />
         ))}
       </div>
-      <div className="col-sm cardStack">
+      <div className="col-sm cardStack empty-board-pile">
         {props.pile_3.map((card, index) => (
           <Card
             card={card}
@@ -35,7 +35,7 @@ const Board = (props) => (
           />
         ))}
       </div>
-      <div className="col-sm cardStack">
+      <div className="col-sm cardStack empty-board-pile">
         {props.pile_4.map((card, index) => (
           <Card
             card={card}
@@ -45,7 +45,7 @@ const Board = (props) => (
           />
         ))}
       </div>
-      <div className="col-sm cardStack">
+      <div className="col-sm cardStack empty-board-pile">
         {props.pile_5.map((card, index) => (
           <Card
             card={card}
@@ -55,7 +55,7 @@ const Board = (props) => (
           />
         ))}
       </div>
-      <div className="col-sm cardStack">
+      <div className="col-sm cardStack empty-board-pile">
         {props.pile_6.map((card, index) => (
           <Card
             card={card}
@@ -65,7 +65,7 @@ const Board = (props) => (
           />
         ))}
       </div>
-      <div className="col-sm cardStack">
+      <div className="col-sm cardStack empty-board-pile">
         {props.pile_7.map((card, index) => (
           <Card
             card={card}
@@ -77,7 +77,7 @@ const Board = (props) => (
       </div>
     </div>
     <div className="row board-row">
-      <div className="col-sm cardStack">
+      <div className="col-sm cardStack empty-board-pile">
         {props.pile_8.map((card, index) => (
           <Card
             card={card}
@@ -87,7 +87,7 @@ const Board = (props) => (
           />
         ))}
       </div>
-      <div className="col-sm cardStack">
+      <div className="col-sm cardStack empty-board-pile">
         {props.pile_9.map((card, index) => (
           <Card
             card={card}
@@ -97,7 +97,7 @@ const Board = (props) => (
           />
         ))}
       </div>
-      <div className="col-sm cardStack">
+      <div className="col-sm cardStack empty-board-pile">
         {props.pile_0.map((card, index) => (
           <Card
             card={card}
@@ -110,7 +110,7 @@ const Board = (props) => (
       <div className="col-sm cardStack" onDoubleClick={props.handleDrawStack}>
         <img src={Drawstack} className="drawStack" height="26%" />
       </div>
-      <div className="col-sm cardStack">
+      <div className="col-sm cardStack empty-board-pile">
         {props.pile_J.map((card, index) => (
           <Card
             card={card}
@@ -120,7 +120,7 @@ const Board = (props) => (
           />
         ))}
       </div>
-      <div className="col-sm cardStack">
+      <div className="col-sm cardStack empty-board-pile">
         {props.pile_Q.map((card, index) => (
           <Card
             card={card}
@@ -130,7 +130,7 @@ const Board = (props) => (
           />
         ))}
       </div>
-      <div className="col-sm cardStack">
+      <div className="col-sm cardStack empty-board-pile">
         {props.pile_K.map((card, index) => (
           <Card
             card={card}

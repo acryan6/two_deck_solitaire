@@ -5,38 +5,7 @@ import Card from "./components/Card.jsx";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { DndProvider } from "react-dnd";
 import Promise from "bluebird";
-
-const order = [
-  "ACE",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-  "10",
-  "JACK",
-  "QUEEN",
-  "KING",
-];
-
-const dealOrder = [
-  "A",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-  "0",
-  "J",
-  "Q",
-  "K",
-];
+import { order, dealOrder } from "../../utils/order.js";
 
 class App extends React.Component {
   constructor(props) {
