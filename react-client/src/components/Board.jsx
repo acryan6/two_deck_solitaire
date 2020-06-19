@@ -145,10 +145,3 @@ const Board = (props) => (
 );
 
 export default Board;
-// {/* {props.cards.map((card) => (
-//       <Card card={card} />
-//     ))}
-//     <div className="container-sm">
-//       <img src={Drawstack} />
-//     </div>
-//   </div> */}
