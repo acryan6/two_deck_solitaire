@@ -1,6 +1,8 @@
 body {
   background: linear-gradient(to bottom, #1a4a1c, #308834 600px);
   color: #fff;
+  height: 100vw;
+  width: 100vw;
 }
 
 .top-bar {
@@ -43,8 +45,8 @@ body {
 
 .drawStack {
   border-radius: 5%;
-  height: 220px;
-  max-height: 220px;
+  height: 200px;
+  max-height: 200px;
   padding-left: inherit;
 }
 

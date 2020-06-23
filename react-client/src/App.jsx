@@ -143,7 +143,7 @@ class App extends React.Component {
   render() {
     return (
       <DndProvider backend={HTML5Backend}>
-        <div>
+        <div className="browser">
           <div className="container top-bar">
             <div className="row">
               <div className="col-sm title-block">
