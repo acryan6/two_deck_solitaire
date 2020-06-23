@@ -1,6 +1,6 @@
 import React from "react";
 import { useDrag } from "react-dnd";
-import { ItemTypes } from "../../../utils/items";
+import { ItemTypes } from "../utils/items";
 
 const Card = (props) => {
   const [{ isDragging }, drag] = useDrag({

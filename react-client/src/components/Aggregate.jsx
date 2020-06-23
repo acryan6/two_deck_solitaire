@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "./Card.jsx";
 import { useDrop } from "react-dnd";
-import { ItemTypes } from "../../../utils/items";
+import { ItemTypes } from "../utils/items";
 
 const Aggregate = (props) => {
   const [{ isOver }, drop] = useDrop({
