@@ -12,7 +12,7 @@ const Card = (props) => {
       name: props.name || null,
     },
     collect: (monitor) => ({
-      isDragging: !!monitor.isDragging(),
+      isDragging: monitor.isDragging(),
     }),
   });
 
