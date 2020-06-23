@@ -15,7 +15,7 @@ body {
   max-width: 400px;
 }
 
-.cardStack {
+.card-stack {
   max-width: 250px;
 }
 .empty-pile {
@@ -43,7 +43,12 @@ body {
   justify-content: center;
 }
 
-.drawStack {
+.draw-stack-container {
+  justify-content: center;
+  display: grid;
+}
+
+.draw-stack {
   border-radius: 5%;
   height: 200px;
   max-height: 200px;
