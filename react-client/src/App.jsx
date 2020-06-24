@@ -56,7 +56,8 @@ class App extends React.Component {
       let drawCount = val === pile ? 1 : 0;
       if (val === "A") {
         drawCount += 2;
-      } else if (val === "K" || pile === "K" || pile === "0") {
+      }
+      if (val === "K" || pile === "K" || pile === "0") {
         drawCount++;
       }
       for (let j = i + 1; j < i + 1 + drawCount; j++) {
@@ -64,13 +65,13 @@ class App extends React.Component {
           addDraw.push(deck[j]);
         }
       }
+      let newDrawStack = this.state.drawStack.concat(addDraw);
       await this.setState({
         [`pile_${pile}`]: [...this.state[`pile_${pile}`], deck[i]],
-        drawStack: this.state.drawStack.concat(addDraw),
+        drawStack: newDrawStack,
       });
       i += drawCount;
       position++;
-      console.log(pile, val, drawCount);
     }
   }
 
