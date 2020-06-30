@@ -1,11 +1,34 @@
 import { order, dealOrder } from "../utils/order.js";
 
+const gameState = {
+  pile_A: [],
+  pile_2: [],
+  pile_3: [],
+  pile_4: [],
+  pile_5: [],
+  pile_6: [],
+  pile_7: [],
+  pile_8: [],
+  pile_9: [],
+  pile_0: [],
+  pile_J: [],
+  pile_Q: [],
+  pile_K: [],
+  drawStack: [],
+  hearts: [],
+  clubs: [],
+  diamonds: [],
+  spades: [],
+  showHand: false,
+  hand: null,
+};
+
 const getInitState = () => {
   fetch("/api/cards")
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
-      return dealCards(data);
+      dealCards(data);
+      return gameState;
     })
     .catch((err) => console.log(err));
 };
@@ -14,6 +37,7 @@ const dealCards = async (deck) => {
   let position = 0;
   for (let i = 0; i < deck.length; i++) {
     let pile = dealOrder[position % 13];
+    gameState[`pile_${pile}`].push(deck[i]);
     let val = deck[i].code[0];
     let addDraw = [];
     let drawCount = val === pile ? 1 : 0;
@@ -25,14 +49,9 @@ const dealCards = async (deck) => {
     }
     for (let j = i + 1; j < i + 1 + drawCount; j++) {
       if (deck[j]) {
-        addDraw.push(deck[j]);
+        gameState.drawStack.push(deck[j]);
       }
     }
-    let newDrawStack = this.state.drawStack.concat(addDraw);
-    await this.setState({
-      [`pile_${pile}`]: [...this.state[`pile_${pile}`], deck[i]],
-      drawStack: newDrawStack,
-    });
     i += drawCount;
     position++;
   }
