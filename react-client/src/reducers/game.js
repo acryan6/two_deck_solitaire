@@ -28,12 +28,12 @@ const getInitState = () => {
     .then((res) => res.json())
     .then((data) => {
       dealCards(data);
-      return gameState;
     })
     .catch((err) => console.log(err));
+  return gameState;
 };
 
-const dealCards = async (deck) => {
+const dealCards = (deck) => {
   let position = 0;
   for (let i = 0; i < deck.length; i++) {
     let pile = dealOrder[position % 13];
@@ -55,9 +55,11 @@ const dealCards = async (deck) => {
     i += drawCount;
     position++;
   }
+  console.log(gameState);
 };
 
 const gameReducer = (state = getInitState(), action) => {
+  // console.log(state);
   switch (action.type) {
     default:
       return state;
