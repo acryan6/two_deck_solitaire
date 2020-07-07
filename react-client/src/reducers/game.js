@@ -1,7 +1,7 @@
 import { order, dealOrder } from "../utils/order.js";
 import Immutable, { Map } from "immutable";
 
-const gameState = {
+const gameState = Map({
   pile_A: [],
   pile_2: [],
   pile_3: [],
@@ -22,7 +22,7 @@ const gameState = {
   spades: [],
   showHand: false,
   hand: null,
-};
+});
 
 const getInitState = () => {
   fetch("/api/cards")
