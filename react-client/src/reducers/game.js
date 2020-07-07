@@ -1,28 +1,28 @@
 import { order, dealOrder } from "../utils/order.js";
-import Immutable, { Map, List } from "immutable";
+import Immutable, { Map } from "immutable";
 
-const gameState = Map({
-  pile_A: List([]),
-  pile_2: List([]),
-  pile_3: List([]),
-  pile_4: List([]),
-  pile_5: List([]),
-  pile_6: List([]),
-  pile_7: List([]),
-  pile_8: List([]),
-  pile_9: List([]),
-  pile_0: List([]),
-  pile_J: List([]),
-  pile_Q: List([]),
-  pile_K: List([]),
-  drawStack: List([]),
-  hearts: List([]),
-  clubs: List([]),
-  diamonds: List([]),
-  spades: List([]),
+const gameState = {
+  pile_A: [],
+  pile_2: [],
+  pile_3: [],
+  pile_4: [],
+  pile_5: [],
+  pile_6: [],
+  pile_7: [],
+  pile_8: [],
+  pile_9: [],
+  pile_0: [],
+  pile_J: [],
+  pile_Q: [],
+  pile_K: [],
+  drawStack: [],
+  hearts: [],
+  clubs: [],
+  diamonds: [],
+  spades: [],
   showHand: false,
   hand: null,
-});
+};
 
 const getInitState = () => {
   fetch("/api/cards")
@@ -56,11 +56,11 @@ const dealCards = (deck) => {
     i += drawCount;
     position++;
   }
-  console.log(gameState);
+  // console.log(gameState);
 };
 
-const gameReducer = (state = getInitState(), action) => {
-  // console.log(state);
+const gameReducer = (state = Map({}).merge(getInitState()), action) => {
+  console.log(state);
   switch (action.type) {
     default:
       return state;
