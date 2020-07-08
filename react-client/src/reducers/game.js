@@ -1,5 +1,5 @@
 import { order, dealOrder } from "../utils/order.js";
-import Immutable, { Map } from "immutable";
+import Immutable, { Map, List } from "immutable";
 
 const gameState = {
   pile_A: [],
@@ -29,6 +29,13 @@ const getInitState = () => {
     .then((res) => res.json())
     .then((data) => {
       dealCards(data);
+      for (let key in gameState) {
+        // console.log(typeof key);
+        if (Array.isArray(gameState[key])) {
+          gameState[key] = List([]).concat(gameState[key]);
+          console.log(key, gameState[key]);
+        }
+      }
     })
     .catch((err) => console.log(err));
   return gameState;
