@@ -1,7 +1,9 @@
 import React from "react";
 import Card from "./Card.jsx";
 import { useDrop } from "react-dnd";
+import { useSelector } from "react-redux";
 import { ItemTypes } from "../utils/items";
+var hearts, diamonds, spades, clubs;
 
 const Aggregate = (props) => {
   const [{ isOver }, drop] = useDrop({
@@ -10,6 +12,16 @@ const Aggregate = (props) => {
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
     }),
+  });
+
+  [hearts, diamonds, spades, clubs] = useSelector((state) => {
+    let game = state.get("game");
+    return [
+      game.get("hearts"),
+      game.get("diamonds"),
+      game.get("spades"),
+      game.get("clubs"),
+    ];
   });
 
   return (
