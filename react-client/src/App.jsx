@@ -152,13 +152,7 @@ class App extends React.Component {
                 <h3>A Form of Devil's Solitaire(?)</h3>
               </div>
               <div className="col-sm">
-                <Aggregate
-                  hearts={this.state.hearts}
-                  diamonds={this.state.diamonds}
-                  clubs={this.state.clubs}
-                  spades={this.state.spades}
-                  handleDrop={this.handleDrop}
-                />
+                <Aggregate handleDrop={this.handleDrop} />
               </div>
             </div>
           </div>
@@ -174,19 +168,6 @@ class App extends React.Component {
             </div>
           ) : null}
           <Board
-            pile_A={this.state.pile_A}
-            pile_2={this.state.pile_2}
-            pile_3={this.state.pile_3}
-            pile_4={this.state.pile_4}
-            pile_5={this.state.pile_5}
-            pile_6={this.state.pile_6}
-            pile_7={this.state.pile_7}
-            pile_8={this.state.pile_8}
-            pile_9={this.state.pile_9}
-            pile_0={this.state.pile_0}
-            pile_J={this.state.pile_J}
-            pile_Q={this.state.pile_Q}
-            pile_K={this.state.pile_K}
             drawStack={this.state.drawStack}
             handleDoubleClick={this.handleDoubleClick}
             handleDrawStack={this.handleDrawStack}

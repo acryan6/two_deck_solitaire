@@ -1,7 +1,9 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Card from "./Card.jsx";
 import Drawstack from "./Card_back.png";
+import { useDrag } from "react-dnd";
+import { ItemTypes } from "../utils/items";
 var pile_A,
   pile_2,
   pile_3,
@@ -50,17 +52,47 @@ const Board = (props) => {
     ];
   });
 
+  // const [{ isDragging }, drag] = useDrag({
+  //   item: {
+  //     type: ItemTypes.CARD,
+  //     value: props.card.value,
+  //     suit: props.card.suit,
+  //     code: props.card.code,
+  //     name: props.name || null,
+  //   },
+  //   collect: (monitor) => ({
+  //     isDragging: monitor.isDragging(),
+  //   }),
+  // });
+
+  const dispatch = useDispatch();
+
   return (
     <div className="container-fluid">
       <div className="row board-row">
         <div className="col-sm card-stack empty-board-pile">
           {pile_A.map((card, index) => (
-            <Card
-              card={card}
-              handleDoubleClick={props.handleDoubleClick}
-              name="A"
-              index={index}
-            />
+            // <Card
+            //   card={card}
+            //   handleDoubleClick={props.handleDoubleClick}
+            //   name="A"
+            //   index={index}
+            // />
+            <div
+              onDoubleClick={props.handleDoubleClick}
+              // opacity={isDragging ? "0.2" : "1"}
+              // ref={drag}
+            >
+              <img
+                src={card.image}
+                title={`${card.value} ${card.suit} ${card.code}`}
+                height="100%"
+                max-width="100%"
+                alt={`Image of the ${card.value.toLowerCase()} of ${card.suit.toLowerCase()} card`}
+                name="A"
+                style={{ zIndex: index, position: "absolute" }}
+              />
+            </div>
           ))}
         </div>
         <div className="col-sm card-stack empty-board-pile">

@@ -1,5 +1,6 @@
 import React from "react";
 import { useDrag } from "react-dnd";
+import { useDispatch } from "react-redux";
 import { ItemTypes } from "../utils/items";
 
 const Card = (props) => {
@@ -15,6 +16,7 @@ const Card = (props) => {
       isDragging: monitor.isDragging(),
     }),
   });
+  const dispatch = useDispatch();
 
   return (
     <div
