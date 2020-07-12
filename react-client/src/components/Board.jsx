@@ -54,7 +54,7 @@ const Board = (props) => {
     <div className="container-fluid">
       <div className="row board-row">
         <div className="col-sm card-stack empty-board-pile">
-          {props.pile_A.map((card, index) => (
+          {pile_A.map((card, index) => (
             <Card
               card={card}
               handleDoubleClick={props.handleDoubleClick}
@@ -64,7 +64,7 @@ const Board = (props) => {
           ))}
         </div>
         <div className="col-sm card-stack empty-board-pile">
-          {props.pile_2.map((card, index) => (
+          {pile_2.map((card, index) => (
             <Card
               card={card}
               handleDoubleClick={props.handleDoubleClick}
@@ -74,7 +74,7 @@ const Board = (props) => {
           ))}
         </div>
         <div className="col-sm card-stack empty-board-pile">
-          {props.pile_3.map((card, index) => (
+          {pile_3.map((card, index) => (
             <Card
               card={card}
               handleDoubleClick={props.handleDoubleClick}
@@ -84,7 +84,7 @@ const Board = (props) => {
           ))}
         </div>
         <div className="col-sm card-stack empty-board-pile">
-          {props.pile_4.map((card, index) => (
+          {pile_4.map((card, index) => (
             <Card
               card={card}
               handleDoubleClick={props.handleDoubleClick}
@@ -94,7 +94,7 @@ const Board = (props) => {
           ))}
         </div>
         <div className="col-sm card-stack empty-board-pile">
-          {props.pile_5.map((card, index) => (
+          {pile_5.map((card, index) => (
             <Card
               card={card}
               handleDoubleClick={props.handleDoubleClick}
@@ -104,7 +104,7 @@ const Board = (props) => {
           ))}
         </div>
         <div className="col-sm card-stack empty-board-pile">
-          {props.pile_6.map((card, index) => (
+          {pile_6.map((card, index) => (
             <Card
               card={card}
               handleDoubleClick={props.handleDoubleClick}
@@ -114,7 +114,7 @@ const Board = (props) => {
           ))}
         </div>
         <div className="col-sm card-stack empty-board-pile">
-          {props.pile_7.map((card, index) => (
+          {pile_7.map((card, index) => (
             <Card
               card={card}
               handleDoubleClick={props.handleDoubleClick}
@@ -126,7 +126,7 @@ const Board = (props) => {
       </div>
       <div className="row board-row">
         <div className="col-sm card-stack empty-board-pile">
-          {props.pile_8.map((card, index) => (
+          {pile_8.map((card, index) => (
             <Card
               card={card}
               handleDoubleClick={props.handleDoubleClick}
@@ -136,7 +136,7 @@ const Board = (props) => {
           ))}
         </div>
         <div className="col-sm card-stack empty-board-pile">
-          {props.pile_9.map((card, index) => (
+          {pile_9.map((card, index) => (
             <Card
               card={card}
               handleDoubleClick={props.handleDoubleClick}
@@ -146,7 +146,7 @@ const Board = (props) => {
           ))}
         </div>
         <div className="col-sm card-stack empty-board-pile">
-          {props.pile_0.map((card, index) => (
+          {pile_0.map((card, index) => (
             <Card
               card={card}
               handleDoubleClick={props.handleDoubleClick}
@@ -162,7 +162,7 @@ const Board = (props) => {
           <img src={Drawstack} className="draw-stack" height="26%" />
         </div>
         <div className="col-sm card-stack empty-board-pile">
-          {props.pile_J.map((card, index) => (
+          {pile_J.map((card, index) => (
             <Card
               card={card}
               handleDoubleClick={props.handleDoubleClick}
@@ -172,7 +172,7 @@ const Board = (props) => {
           ))}
         </div>
         <div className="col-sm card-stack empty-board-pile">
-          {props.pile_Q.map((card, index) => (
+          {pile_Q.map((card, index) => (
             <Card
               card={card}
               handleDoubleClick={props.handleDoubleClick}
@@ -182,7 +182,7 @@ const Board = (props) => {
           ))}
         </div>
         <div className="col-sm card-stack empty-board-pile">
-          {props.pile_K.map((card, index) => (
+          {pile_K.map((card, index) => (
             <Card
               card={card}
               handleDoubleClick={props.handleDoubleClick}
