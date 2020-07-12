@@ -30,10 +30,8 @@ const getInitState = () => {
     .then((data) => {
       dealCards(data);
       for (let key in gameState) {
-        // console.log(typeof key);
         if (Array.isArray(gameState[key])) {
-          gameState[key] = List([]).concat(gameState[key]);
-          console.log(key, gameState[key]);
+          gameState[key] = List().concat(gameState[key]);
         }
       }
     })
@@ -66,7 +64,7 @@ const dealCards = (deck) => {
   // console.log(gameState);
 };
 
-const gameReducer = (state = Map({}).merge(getInitState()), action) => {
+const gameReducer = (state = Map().merge(getInitState()), action) => {
   console.log(state);
   switch (action.type) {
     default:
