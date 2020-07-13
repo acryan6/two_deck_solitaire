@@ -64,9 +64,38 @@ const dealCards = (deck) => {
   // console.log(gameState);
 };
 
+const incrementPile = () => {
+  let pile = e.target.name;
+  let suit = e.target.title.split(" ")[1].toLowerCase();
+  let value = e.target.title.split(" ")[0];
+  let code = e.target.title.split(" ")[2];
+  // if ((this.state[suit].length === 0 && value === 'A') || (this.state[suit].length > 0 && value === order[this.state[suit].length])) {
+  if (value === order[this.state[suit].length]) {
+    this.getAndSetCard(suit, value, pile, code);
+  }
+};
+
+const getAndSetCard = (suit, value, pile, code) => {
+  let statePile = this.state[`pile_${pile}`];
+  for (let i = 0; i < statePile.length; i++) {
+    if (statePile[i].code === code) {
+      const card = statePile.splice(i, 1)[0];
+      card.name = "aggregate-pile";
+      this.setState(
+        {
+          [suit]: [...this.state[suit], card],
+        },
+        () => console.log(this.state[suit][0].name)
+      );
+    }
+  }
+};
+
 const gameReducer = (state = Map().merge(getInitState()), action) => {
   console.log(state);
   switch (action.type) {
+    case "INCREMENT":
+      return incrementPile();
     default:
       return state;
   }
