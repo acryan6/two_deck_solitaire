@@ -64,13 +64,14 @@ const dealCards = (deck) => {
   // console.log(gameState);
 };
 
-const incrementPile = () => {
-  let pile = e.target.name;
-  let suit = e.target.title.split(" ")[1].toLowerCase();
-  let value = e.target.title.split(" ")[0];
-  let code = e.target.title.split(" ")[2];
+const incrementPile = (card) => {
+  console.log(card);
+  let pile = card.name;
+  let suit = card.title.split(" ")[1].toLowerCase();
+  let value = card.title.split(" ")[0];
+  let code = card.title.split(" ")[2];
   // if ((this.state[suit].length === 0 && value === 'A') || (this.state[suit].length > 0 && value === order[this.state[suit].length])) {
-  if (value === order[this.state[suit].length]) {
+  if (value === order[state.get("game").get(suit).length]) {
     this.getAndSetCard(suit, value, pile, code);
   }
 };
@@ -95,7 +96,7 @@ const gameReducer = (state = Map().merge(getInitState()), action) => {
   console.log(state);
   switch (action.type) {
     case "INCREMENT":
-      return incrementPile();
+      return incrementPile(action.payload);
     default:
       return state;
   }
