@@ -80,7 +80,10 @@ const Board = (props) => {
             //   index={index}
             // />
             <div
-              onDoubleClick={() => dispatch(increment(card))}
+              onDoubleClick={() => {
+                card.pile = "A";
+                dispatch(increment(card));
+              }}
               // opacity={isDragging ? "0.2" : "1"}
               // ref={drag}
             >
