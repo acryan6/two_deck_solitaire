@@ -65,13 +65,13 @@ const dealCards = (deck) => {
 };
 
 const incrementPile = (state, card) => {
-  console.log(card);
   let pile = card.pile;
   let suit = card.suit.toLowerCase();
   let suitCode = card.code[1];
   let value = card.code[0];
-  if (value === order[state.get("game").get(suit).length]) {
-    let statePile = this.state[`pile_${pile}`];
+  if (value === dealOrder[state.get(suit).length]) {
+    console.log("worked");
+    let statePile = state.get(`pile_${pile}`);
     for (let i = 0; i < statePile.length; i++) {
       if (statePile[i].code === code) {
         const card = statePile.splice(i, 1)[0];
@@ -84,11 +84,11 @@ const incrementPile = (state, card) => {
         );
       }
     }
-  }
+  } else return state;
 };
 
 const gameReducer = (state = Map().merge(getInitState()), action) => {
-  console.log(state);
+  // console.log(state);
   switch (action.type) {
     case "INCREMENT":
       return incrementPile(state, action.payload);
