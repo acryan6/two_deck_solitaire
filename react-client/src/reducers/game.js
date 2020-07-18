@@ -61,7 +61,6 @@ const dealCards = (deck) => {
     i += drawCount;
     position++;
   }
-  // console.log(gameState);
 };
 
 const incrementPile = (state, card) => {
@@ -83,7 +82,6 @@ const incrementPile = (state, card) => {
 };
 
 const gameReducer = (state = Map().merge(getInitState()), action) => {
-  // console.log(state);
   switch (action.type) {
     case "INCREMENT":
       return incrementPile(state, action.payload);

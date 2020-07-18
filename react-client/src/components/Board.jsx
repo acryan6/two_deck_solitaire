@@ -68,128 +68,61 @@ const Board = (props) => {
 
   const dispatch = useDispatch();
 
+  const getDiv = (card, index, pile) => (
+    <div
+      onDoubleClick={() => {
+        card.pile = pile;
+        dispatch(increment(card));
+      }}
+      // opacity={isDragging ? "0.2" : "1"}
+      // ref={drag}
+    >
+      <img
+        src={card.image}
+        title={`${card.value} ${card.suit} ${card.code}`}
+        height="100%"
+        max-width="100%"
+        alt={`Image of the ${card.value.toLowerCase()} of ${card.suit.toLowerCase()} card`}
+        name="A"
+        style={{ zIndex: index, position: "absolute" }}
+      />
+    </div>
+  );
+
   return (
     <div className="container-fluid">
       <div className="row board-row">
         <div className="col-sm card-stack empty-board-pile">
-          {pile_A.map((card, index) => (
-            // <Card
-            //   card={card}
-            //   handleDoubleClick={props.handleDoubleClick}
-            //   name="A"
-            //   index={index}
-            // />
-            <div
-              onDoubleClick={() => {
-                card.pile = "A";
-                dispatch(increment(card));
-              }}
-              // opacity={isDragging ? "0.2" : "1"}
-              // ref={drag}
-            >
-              <img
-                src={card.image}
-                title={`${card.value} ${card.suit} ${card.code}`}
-                height="100%"
-                max-width="100%"
-                alt={`Image of the ${card.value.toLowerCase()} of ${card.suit.toLowerCase()} card`}
-                name="A"
-                style={{ zIndex: index, position: "absolute" }}
-              />
-            </div>
-          ))}
+          {pile_A.map((card, index) => getDiv(card, index, "A"))}
         </div>
         <div className="col-sm card-stack empty-board-pile">
-          {pile_2.map((card, index) => (
-            <Card
-              card={card}
-              handleDoubleClick={props.handleDoubleClick}
-              name="2"
-              index={index}
-            />
-          ))}
+          {pile_2.map((card, index) => getDiv(card, index, "2"))}
         </div>
         <div className="col-sm card-stack empty-board-pile">
-          {pile_3.map((card, index) => (
-            <Card
-              card={card}
-              handleDoubleClick={props.handleDoubleClick}
-              name="3"
-              index={index}
-            />
-          ))}
+          {pile_3.map((card, index) => getDiv(card, index, "3"))}
         </div>
         <div className="col-sm card-stack empty-board-pile">
-          {pile_4.map((card, index) => (
-            <Card
-              card={card}
-              handleDoubleClick={props.handleDoubleClick}
-              name="4"
-              index={index}
-            />
-          ))}
+          {pile_4.map((card, index) => getDiv(card, index, "4"))}
         </div>
         <div className="col-sm card-stack empty-board-pile">
-          {pile_5.map((card, index) => (
-            <Card
-              card={card}
-              handleDoubleClick={props.handleDoubleClick}
-              name="5"
-              index={index}
-            />
-          ))}
+          {pile_5.map((card, index) => getDiv(card, index, "5"))}
         </div>
         <div className="col-sm card-stack empty-board-pile">
-          {pile_6.map((card, index) => (
-            <Card
-              card={card}
-              handleDoubleClick={props.handleDoubleClick}
-              name="6"
-              index={index}
-            />
-          ))}
+          {pile_6.map((card, index) => getDiv(card, index, "6"))}
         </div>
         <div className="col-sm card-stack empty-board-pile">
-          {pile_7.map((card, index) => (
-            <Card
-              card={card}
-              handleDoubleClick={props.handleDoubleClick}
-              name="7"
-              index={index}
-            />
-          ))}
+          {pile_7.map((card, index) => getDiv(card, index, "7"))}
         </div>
       </div>
       <div className="row board-row">
         <div className="col-sm card-stack empty-board-pile">
-          {pile_8.map((card, index) => (
-            <Card
-              card={card}
-              handleDoubleClick={props.handleDoubleClick}
-              name="8"
-              index={index}
-            />
-          ))}
+          {pile_8.map((card, index) => getDiv(card, index, "8"))}
         </div>
         <div className="col-sm card-stack empty-board-pile">
-          {pile_9.map((card, index) => (
-            <Card
-              card={card}
-              handleDoubleClick={props.handleDoubleClick}
-              name="9"
-              index={index}
-            />
-          ))}
+          {pile_9.map((card, index) => getDiv(card, index, "9"))}
         </div>
         <div className="col-sm card-stack empty-board-pile">
-          {pile_0.map((card, index) => (
-            <Card
-              card={card}
-              handleDoubleClick={props.handleDoubleClick}
-              name="0"
-              index={index}
-            />
-          ))}
+          {pile_0.map((card, index) => getDiv(card, index, "0"))}
         </div>
         <div
           className="col-sm card-stack draw-stack-container"
@@ -198,34 +131,13 @@ const Board = (props) => {
           <img src={Drawstack} className="draw-stack" height="26%" />
         </div>
         <div className="col-sm card-stack empty-board-pile">
-          {pile_J.map((card, index) => (
-            <Card
-              card={card}
-              handleDoubleClick={props.handleDoubleClick}
-              name="J"
-              index={index}
-            />
-          ))}
+          {pile_J.map((card, index) => getDiv(card, index, "J"))}
         </div>
         <div className="col-sm card-stack empty-board-pile">
-          {pile_Q.map((card, index) => (
-            <Card
-              card={card}
-              handleDoubleClick={props.handleDoubleClick}
-              name="Q"
-              index={index}
-            />
-          ))}
+          {pile_Q.map((card, index) => getDiv(card, index, "Q"))}
         </div>
         <div className="col-sm card-stack empty-board-pile">
-          {pile_K.map((card, index) => (
-            <Card
-              card={card}
-              handleDoubleClick={props.handleDoubleClick}
-              name="K"
-              index={index}
-            />
-          ))}
+          {pile_K.map((card, index) => getDiv(card, index, "K"))}
         </div>
       </div>
     </div>
