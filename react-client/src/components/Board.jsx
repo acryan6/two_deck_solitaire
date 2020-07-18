@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Drawstack from "./Card_back.png";
 import { useDrag } from "react-dnd";
 import { ItemTypes } from "../utils/items";
-import { increment } from "../actions";
+import { increment, drawStack } from "../actions";
 var pile_A,
   pile_2,
   pile_3,
@@ -126,7 +126,7 @@ const Board = (props) => {
         </div>
         <div
           className="col-sm card-stack draw-stack-container"
-          onDoubleClick={props.handleDrawStack}
+          onDoubleClick={() => dispatch(drawStack())}
         >
           <img src={Drawstack} className="draw-stack" height="26%" />
         </div>

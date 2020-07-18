@@ -21,7 +21,7 @@ const gameState = {
   diamonds: [],
   spades: [],
   showHand: false,
-  hand: null,
+  hand: [],
 };
 
 const getInitState = () => {
@@ -82,27 +82,25 @@ const incrementPile = (state, card) => {
 };
 
 const handleDrawStack = (state) => {
-  console.log(this.state.drawStack);
-  let draw = this.state.drawStack[this.state.drawStack.length - 1];
+  console.log(state.get("drawStack"));
+  let draw = state.getIn(["drawStack", state.get("drawStack").length - 1]);
+  console.log(draw);
   let val = draw.code[0];
-  let newDrawStack = this.state.drawStack.slice(
-    0,
-    this.state.drawStack.length - 1
-  );
-  this.setState({
+  let newDrawStack = state.drawStack.slice(0, state.drawStack.length - 1);
+  setState({
     drawStack: newDrawStack,
-    [`pile_${val}`]: [...this.state[`pile_${val}`], draw],
+    [`pile_${val}`]: [...state[`pile_${val}`], draw],
     showHand: true,
     hand: `pile_${val}`,
   });
-}
+};
 
 const gameReducer = (state = Map().merge(getInitState()), action) => {
   switch (action.type) {
     case "INCREMENT":
       return incrementPile(state, action.payload);
-    case: "DRAW_STACK":
-      return handleDrawStack(state)
+    case "DRAW_STACK":
+      return handleDrawStack(state);
     default:
       return state;
   }
