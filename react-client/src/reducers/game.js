@@ -69,19 +69,14 @@ const incrementPile = (state, card) => {
   let suit = card.suit.toLowerCase();
   let suitCode = card.code[1];
   let value = card.code[0];
+  let code = card.code;
   if (value === dealOrder[state.get(suit).length]) {
-    console.log("worked");
-    let statePile = state.get(`pile_${pile}`);
-    for (let i = 0; i < statePile.length; i++) {
-      if (statePile[i].code === code) {
-        const card = statePile.splice(i, 1)[0];
-        card.name = "aggregate-pile";
-        this.setState(
-          {
-            [suit]: [...this.state[suit], card],
-          },
-          () => console.log(this.state[suit][0].name)
-        );
+    let pileList = state.get(`pile_${pile}`);
+    for (let i = 0; i < pileList.length; i++) {
+      if (pileList[i].code === code) {
+        return state
+          .deleteIn([`pile_${pile}`, i])
+          .updateIn([suit], (list) => [...list, card]);
       }
     }
   } else return state;
