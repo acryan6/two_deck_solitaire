@@ -4,3 +4,9 @@ export const increment = (arg) => {
     payload: arg,
   };
 };
+
+export const drawStack = () => {
+  return {
+    type: "DRAW_STACK",
+  };
+};

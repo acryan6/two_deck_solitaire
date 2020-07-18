@@ -81,10 +81,28 @@ const incrementPile = (state, card) => {
   } else return state;
 };
 
+const handleDrawStack = (state) => {
+  console.log(this.state.drawStack);
+  let draw = this.state.drawStack[this.state.drawStack.length - 1];
+  let val = draw.code[0];
+  let newDrawStack = this.state.drawStack.slice(
+    0,
+    this.state.drawStack.length - 1
+  );
+  this.setState({
+    drawStack: newDrawStack,
+    [`pile_${val}`]: [...this.state[`pile_${val}`], draw],
+    showHand: true,
+    hand: `pile_${val}`,
+  });
+}
+
 const gameReducer = (state = Map().merge(getInitState()), action) => {
   switch (action.type) {
     case "INCREMENT":
       return incrementPile(state, action.payload);
+    case: "DRAW_STACK":
+      return handleDrawStack(state)
     default:
       return state;
   }

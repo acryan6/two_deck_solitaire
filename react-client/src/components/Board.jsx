@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import Card from "./Card.jsx";
 import Drawstack from "./Card_back.png";
 import { useDrag } from "react-dnd";
 import { ItemTypes } from "../utils/items";
@@ -76,6 +75,7 @@ const Board = (props) => {
       }}
       // opacity={isDragging ? "0.2" : "1"}
       // ref={drag}
+      key={index}
     >
       <img
         src={card.image}
