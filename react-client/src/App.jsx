@@ -156,17 +156,13 @@ class App extends React.Component {
               </div>
             </div>
           </div>
-          {this.state.showHand ? (
-            <div className="container">
-              <div className="row hand-row">
-                {this.state[this.state.hand].map((card) => (
-                  <div className="col-sm hand">
-                    <Card card={card} handleDoubleClick={this.handleHand} />
-                  </div>
-                ))}
-              </div>
+          {/* {this.state.showHand ? ( */}
+          <div className="container">
+            <div className="row hand-row">
+              <Hand />
             </div>
-          ) : null}
+          </div>
+          {/* ) : null} */}
           <Board
             drawStack={this.state.drawStack}
             handleDoubleClick={this.handleDoubleClick}

@@ -1,31 +1,56 @@
 import React from "react";
 import { useDrag } from "react-dnd";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { ItemTypes } from "../utils/items";
+var hand = [];
 
 const Hand = (props) => {
-  const [{ isDragging }, drag] = useDrag({
-    item: {
-      type: ItemTypes.CARD,
-      value: props.card.value,
-      suit: props.card.suit,
-      code: props.card.code,
-      name: props.name || null,
-    },
-    collect: (monitor) => ({
-      isDragging: monitor.isDragging(),
-    }),
-  });
+  // const [{ isDragging }, drag] = useDrag({
+  //   item: {
+  //     type: ItemTypes.CARD,
+  //     value: props.card.value,
+  //     suit: props.card.suit,
+  //     code: props.card.code,
+  //     name: props.name || null,
+  //   },
+  //   collect: (monitor) => ({
+  //     isDragging: monitor.isDragging(),
+  //   }),
+  // });
   const dispatch = useDispatch();
+
+  hand = useSelector((state) => state.get("hand"));
+
+  const getDiv = (card, index, pile) => (
+    <div
+      // onDoubleClick={() => {
+      //   card.pile = pile;
+      //   dispatch(increment(card));
+      // }}
+      // opacity={isDragging ? "0.2" : "1"}
+      // ref={drag}
+      key={index}
+    >
+      <img
+        src={card.image}
+        title={`${card.value} ${card.suit} ${card.code}`}
+        height="100%"
+        max-width="100%"
+        alt={`Image of the ${card.value.toLowerCase()} of ${card.suit.toLowerCase()} card`}
+        // name="A"
+        style={{ zIndex: index, position: "absolute" }}
+      />
+    </div>
+  );
 
   return (
     <div className="container">
       <div className="row hand-row">
-        {this.state[this.state.hand].map((card) => (
-          <div className="col-sm hand">
-            <Card card={card} handleDoubleClick={this.handleHand} />
-          </div>
-        ))}
+        {hand
+          ? hand.map((card) => (
+              <div className="col-sm hand">{getDiv(card)}</div>
+            ))
+          : null}
       </div>
     </div>
     // <div

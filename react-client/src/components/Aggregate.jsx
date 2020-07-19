@@ -23,22 +23,42 @@ const Aggregate = (props) => {
     ];
   });
 
+  const getDiv = (card, index, pile) => (
+    <div
+      // onDoubleClick={() => {
+      //   card.pile = pile;
+      //   dispatch(increment(card));
+      // }}
+      // opacity={isDragging ? "0.2" : "1"}
+      // ref={drag}
+      key={index}
+    >
+      <img
+        src={card.image}
+        title={`${card.value} ${card.suit} ${card.code}`}
+        height="100%"
+        max-width="100%"
+        alt={`Image of the ${card.value.toLowerCase()} of ${card.suit.toLowerCase()} card`}
+        // name="A"
+        style={{ zIndex: index, position: "absolute" }}
+      />
+    </div>
+  );
+
   return (
     <div className="container">
       <div className="row">
         <div className="hearts col-sm empty-pile" ref={drop}>
-          {hearts.length > 0 ? <Card card={hearts[hearts.length - 1]} /> : null}
+          {hearts.length > 0 ? getDiv(hearts[hearts.length - 1]) : null}
         </div>
         <div className="clubs col-sm empty-pile" ref={drop}>
-          {clubs.length > 0 ? <Card card={clubs[clubs.length - 1]} /> : null}
+          {clubs.length > 0 ? getDiv(hearts[hearts.length - 1]) : null}
         </div>
         <div className="diamonds col-sm empty-pile" ref={drop}>
-          {diamonds.length > 0 ? (
-            <Card card={diamonds[diamonds.length - 1]} />
-          ) : null}
+          {diamonds.length > 0 ? getDiv(hearts[hearts.length - 1]) : null}
         </div>
         <div className="spades col-sm empty-pile" ref={drop}>
-          {spades.length > 0 ? <Card card={spades[spades.length - 1]} /> : null}
+          {spades.length > 0 ? getDiv(hearts[hearts.length - 1]) : null}
         </div>
       </div>
     </div>
