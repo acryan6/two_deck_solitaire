@@ -1,7 +1,7 @@
 import React from "react";
 import Board from "./components/Board.jsx";
 import Aggregate from "./components/Aggregate.jsx";
-import Card from "./components/Card.jsx";
+import Hand from "./components/Hand.jsx";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { DndProvider } from "react-dnd";
 import Promise from "bluebird";

@@ -82,17 +82,10 @@ const incrementPile = (state, card) => {
 };
 
 const handleDrawStack = (state) => {
-  console.log(state.get("drawStack"));
-  let draw = state.getIn(["drawStack", state.get("drawStack").length - 1]);
-  console.log(draw);
+  let stack = state.get("drawStack");
+  let draw = stack[stack.length - 1];
   let val = draw.code[0];
-  let newDrawStack = state.drawStack.slice(0, state.drawStack.length - 1);
-  setState({
-    drawStack: newDrawStack,
-    [`pile_${val}`]: [...state[`pile_${val}`], draw],
-    showHand: true,
-    hand: `pile_${val}`,
-  });
+  return state.set("hand", state.get(`pile_${val}`));
 };
 
 const gameReducer = (state = Map().merge(getInitState()), action) => {

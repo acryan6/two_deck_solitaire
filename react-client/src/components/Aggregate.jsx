@@ -1,5 +1,4 @@
 import React from "react";
-import Card from "./Card.jsx";
 import { useDrop } from "react-dnd";
 import { useSelector } from "react-redux";
 import { ItemTypes } from "../utils/items";
