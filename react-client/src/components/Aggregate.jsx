@@ -52,13 +52,13 @@ const Aggregate = (props) => {
           {hearts.length > 0 ? getDiv(hearts[hearts.length - 1]) : null}
         </div>
         <div className="clubs col-sm empty-pile" ref={drop}>
-          {clubs.length > 0 ? getDiv(hearts[hearts.length - 1]) : null}
+          {clubs.length > 0 ? getDiv(clubs[clubs.length - 1]) : null}
         </div>
         <div className="diamonds col-sm empty-pile" ref={drop}>
-          {diamonds.length > 0 ? getDiv(hearts[hearts.length - 1]) : null}
+          {diamonds.length > 0 ? getDiv(diamonds[diamonds.length - 1]) : null}
         </div>
         <div className="spades col-sm empty-pile" ref={drop}>
-          {spades.length > 0 ? getDiv(hearts[hearts.length - 1]) : null}
+          {spades.length > 0 ? getDiv(spades[spades.length - 1]) : null}
         </div>
       </div>
     </div>
