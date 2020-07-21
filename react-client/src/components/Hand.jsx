@@ -2,6 +2,7 @@ import React from "react";
 import { useDrag } from "react-dnd";
 import { useSelector, useDispatch } from "react-redux";
 import { ItemTypes } from "../utils/items";
+import { increment } from "../actions";
 var hand = [];
 
 const Hand = (props) => {
@@ -25,10 +26,10 @@ const Hand = (props) => {
     console.log(card);
     return (
       <div
-        // onDoubleClick={() => {
-        //   card.pile = pile;
-        //   dispatch(increment(card));
-        // }}
+        onDoubleClick={() => {
+          //   card.pile = pile;
+          dispatch(increment(card));
+        }}
         // opacity={isDragging ? "0.2" : "1"}
         // ref={drag}
         key={index}
