@@ -3,7 +3,7 @@ import { useDrag } from "react-dnd";
 import { useSelector, useDispatch } from "react-redux";
 import { ItemTypes } from "../utils/items";
 import { increment } from "../actions";
-var hand = [];
+var hand = null;
 
 const Hand = (props) => {
   // const [{ isDragging }, drag] = useDrag({
@@ -20,10 +20,12 @@ const Hand = (props) => {
   // });
   const dispatch = useDispatch();
 
-  hand = useSelector((state) => state.getIn(["game", "hand"]));
+  hand = useSelector((state) => {
+    let handState = state.getIn(["game", "hand"]);
+    return handState ? state.getIn(["game", handState]) : handState;
+  });
 
   const getDiv = (card, index, pile) => {
-    console.log(card);
     return (
       <div
         onDoubleClick={() => {

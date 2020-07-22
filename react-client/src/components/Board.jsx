@@ -16,7 +16,8 @@ var pile_A,
   pile_0,
   pile_J,
   pile_Q,
-  pile_K;
+  pile_K,
+  hand;
 
 const Board = (props) => {
   [
@@ -33,6 +34,7 @@ const Board = (props) => {
     pile_J,
     pile_Q,
     pile_K,
+    hand,
   ] = useSelector((state) => {
     let game = state.get("game");
     return [
@@ -49,6 +51,7 @@ const Board = (props) => {
       game.get("pile_J"),
       game.get("pile_Q"),
       game.get("pile_K"),
+      game.get("hand"),
     ];
   });
 
@@ -93,36 +96,56 @@ const Board = (props) => {
     <div className="container-fluid">
       <div className="row board-row">
         <div className="col-sm card-stack empty-board-pile">
-          {pile_A.map((card, index) => getDiv(card, index, "A"))}
+          {hand === "pile_A"
+            ? null
+            : pile_A.map((card, index) => getDiv(card, index, "A"))}
         </div>
         <div className="col-sm card-stack empty-board-pile">
-          {pile_2.map((card, index) => getDiv(card, index, "2"))}
+          {hand === "pile_2"
+            ? null
+            : pile_2.map((card, index) => getDiv(card, index, "2"))}
         </div>
         <div className="col-sm card-stack empty-board-pile">
-          {pile_3.map((card, index) => getDiv(card, index, "3"))}
+          {hand === "pile_3"
+            ? null
+            : pile_3.map((card, index) => getDiv(card, index, "3"))}
         </div>
         <div className="col-sm card-stack empty-board-pile">
-          {pile_4.map((card, index) => getDiv(card, index, "4"))}
+          {hand === "pile_4"
+            ? null
+            : pile_4.map((card, index) => getDiv(card, index, "4"))}
         </div>
         <div className="col-sm card-stack empty-board-pile">
-          {pile_5.map((card, index) => getDiv(card, index, "5"))}
+          {hand === "pile_5"
+            ? null
+            : pile_5.map((card, index) => getDiv(card, index, "5"))}
         </div>
         <div className="col-sm card-stack empty-board-pile">
-          {pile_6.map((card, index) => getDiv(card, index, "6"))}
+          {hand === "pile_6"
+            ? null
+            : pile_6.map((card, index) => getDiv(card, index, "6"))}
         </div>
         <div className="col-sm card-stack empty-board-pile">
-          {pile_7.map((card, index) => getDiv(card, index, "7"))}
+          {hand === "pile_7"
+            ? null
+            : pile_7.map((card, index) => getDiv(card, index, "7"))}
         </div>
       </div>
       <div className="row board-row">
         <div className="col-sm card-stack empty-board-pile">
-          {pile_8.map((card, index) => getDiv(card, index, "8"))}
+          {hand === "pile_8"
+            ? null
+            : pile_8.map((card, index) => getDiv(card, index, "8"))}
         </div>
         <div className="col-sm card-stack empty-board-pile">
-          {pile_9.map((card, index) => getDiv(card, index, "9"))}
+          {hand === "pile_9"
+            ? null
+            : pile_9.map((card, index) => getDiv(card, index, "9"))}
         </div>
         <div className="col-sm card-stack empty-board-pile">
-          {pile_0.map((card, index) => getDiv(card, index, "0"))}
+          {hand === "pile_0"
+            ? null
+            : pile_0.map((card, index) => getDiv(card, index, "0"))}
         </div>
         <div
           className="col-sm card-stack draw-stack-container"
@@ -131,13 +154,19 @@ const Board = (props) => {
           <img src={Drawstack} className="draw-stack" height="26%" />
         </div>
         <div className="col-sm card-stack empty-board-pile">
-          {pile_J.map((card, index) => getDiv(card, index, "J"))}
+          {hand === "pile_J"
+            ? null
+            : pile_J.map((card, index) => getDiv(card, index, "J"))}
         </div>
         <div className="col-sm card-stack empty-board-pile">
-          {pile_Q.map((card, index) => getDiv(card, index, "Q"))}
+          {hand === "pile_Q"
+            ? null
+            : pile_Q.map((card, index) => getDiv(card, index, "Q"))}
         </div>
         <div className="col-sm card-stack empty-board-pile">
-          {pile_K.map((card, index) => getDiv(card, index, "K"))}
+          {hand === "pile_K"
+            ? null
+            : pile_K.map((card, index) => getDiv(card, index, "K"))}
         </div>
       </div>
     </div>

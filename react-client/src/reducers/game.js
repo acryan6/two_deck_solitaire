@@ -21,7 +21,7 @@ const gameState = {
   diamonds: [],
   spades: [],
   showHand: false,
-  hand: [],
+  hand: null,
 };
 
 const getInitState = () => {
@@ -85,11 +85,10 @@ const handleDrawStack = (state) => {
   let stack = state.get("drawStack");
   let draw = stack[stack.length - 1];
   let val = draw.code[0];
-  let pile = state.get(`pile_${val}`);
   return state
-    .setIn([`pile_${val}`], [...pile, draw])
+    .setIn([`pile_${val}`], [...state.get(`pile_${val}`), draw])
     .deleteIn(["drawStack", stack.length - 1])
-    .set("hand", [...pile, draw]);
+    .set("hand", `pile_${val}`);
 };
 
 const gameReducer = (state = Map().merge(getInitState()), action) => {
