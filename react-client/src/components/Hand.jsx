@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { ItemTypes } from "../utils/items";
 import { increment } from "../actions";
 var hand = null;
+var handFromPile = null;
 
 const Hand = (props) => {
   // const [{ isDragging }, drag] = useDrag({
@@ -20,16 +21,18 @@ const Hand = (props) => {
   // });
   const dispatch = useDispatch();
 
-  hand = useSelector((state) => {
+  [hand, handFromPile] = useSelector((state) => {
     let handState = state.getIn(["game", "hand"]);
-    return handState ? state.getIn(["game", handState]) : handState;
+    return handState
+      ? [state.getIn(["game", handState]), handState]
+      : [handState, handState];
   });
 
   const getDiv = (card, index, pile) => {
     return (
       <div
         onDoubleClick={() => {
-          //   card.pile = pile;
+          card.pile = handFromPile;
           dispatch(increment(card));
         }}
         // opacity={isDragging ? "0.2" : "1"}
@@ -53,8 +56,8 @@ const Hand = (props) => {
     <div className="container">
       <div className="row hand-row">
         {hand
-          ? hand.map((card) => (
-              <div className="col-sm hand">{getDiv(card)}</div>
+          ? hand.map((card, index) => (
+              <div className="col-sm hand">{getDiv(card, index, "hand")}</div>
             ))
           : null}
       </div>

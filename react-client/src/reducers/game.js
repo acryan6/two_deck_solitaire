@@ -70,12 +70,18 @@ const incrementPile = (state, card) => {
   let value = card.code[0];
   let code = card.code;
   if (value === dealOrder[state.get(suit).length]) {
-    let pileList = state.get(`pile_${pile}`);
+    let pileList = state.get(`pile_${pile}`) || state.get(pile);
     for (let i = 0; i < pileList.length; i++) {
       if (pileList[i].code === code) {
-        return state
-          .deleteIn([`pile_${pile}`, i])
-          .updateIn([suit], (list) => [...list, card]);
+        if (pile.length === 1) {
+          return state
+            .deleteIn([`pile_${pile}`, i])
+            .updateIn([suit], (list) => [...list, card]);
+        } else {
+          return state
+            .deleteIn([pile, i])
+            .updateIn([suit], (list) => [...list, card]);
+        }
       }
     }
   } else return state;
