@@ -4,8 +4,6 @@ import Aggregate from "./components/Aggregate.jsx";
 import Hand from "./components/Hand.jsx";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { DndProvider } from "react-dnd";
-import Promise from "bluebird";
-import { order, dealOrder } from "./utils/order.js";
 
 class App extends React.Component {
   // constructor(props) {
@@ -156,13 +154,11 @@ class App extends React.Component {
               </div>
             </div>
           </div>
-          {/* {this.state.showHand ? ( */}
           <div className="container">
             <div className="row hand-row">
               <Hand />
             </div>
           </div>
-          {/* ) : null} */}
           <Board />
         </div>
       </DndProvider>

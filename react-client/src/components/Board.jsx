@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import Drawstack from "./Card_back.png";
+import drawStackImg from "./Card_back.png";
 import { useDrag } from "react-dnd";
 import { ItemTypes } from "../utils/items";
 import { increment, drawStack } from "../actions";
@@ -17,7 +17,8 @@ var pile_A,
   pile_J,
   pile_Q,
   pile_K,
-  hand;
+  hand,
+  dsLength;
 
 const Board = (props) => {
   [
@@ -35,6 +36,7 @@ const Board = (props) => {
     pile_Q,
     pile_K,
     hand,
+    dsLength,
   ] = useSelector((state) => {
     let game = state.get("game");
     return [
@@ -52,6 +54,7 @@ const Board = (props) => {
       game.get("pile_Q"),
       game.get("pile_K"),
       game.get("hand"),
+      game.get("drawStack").length,
     ];
   });
 
@@ -148,10 +151,12 @@ const Board = (props) => {
             : pile_0.map((card, index) => getDiv(card, index, "0"))}
         </div>
         <div
-          className="col-sm card-stack draw-stack-container"
+          className="col-sm card-stack draw-stack-container empty-board-pile"
           onDoubleClick={() => dispatch(drawStack())}
         >
-          <img src={Drawstack} className="draw-stack" height="26%" />
+          {dsLength === 0 ? null : (
+            <img src={drawStackImg} className="draw-stack" height="26%" />
+          )}
         </div>
         <div className="col-sm card-stack empty-board-pile">
           {hand === "pile_J"
