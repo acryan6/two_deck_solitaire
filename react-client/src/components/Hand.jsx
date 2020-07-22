@@ -32,7 +32,7 @@ const Hand = (props) => {
     return (
       <div
         onDoubleClick={() => {
-          card.pile = handFromPile;
+          card.pile = handFromPile[handFromPile.length - 1];
           dispatch(increment(card));
         }}
         // opacity={isDragging ? "0.2" : "1"}
