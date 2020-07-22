@@ -1,13 +1,16 @@
 import React from "react";
 import { useDrop } from "react-dnd";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { increment } from "../actions";
 import { ItemTypes } from "../utils/items";
 var hearts, diamonds, spades, clubs;
 
 const Aggregate = (props) => {
+  const dispatch = useDispatch();
+
   const [{ isOver }, drop] = useDrop({
     accept: ItemTypes.CARD,
-    drop: (item, monitor) => props.handleDrop(item),
+    drop: (item, monitor) => dispatch(increment(item.card)),
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
     }),

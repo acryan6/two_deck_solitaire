@@ -64,17 +64,18 @@ const dealCards = (deck) => {
 };
 
 const incrementPile = (state, card) => {
+  console.log(card);
   let pile = card.pile;
   let suit = card.suit.toLowerCase();
   let suitCode = card.code[1];
   let value = card.code[0];
   let code = card.code;
   if (value === dealOrder[state.get(suit).length]) {
-    let pileList = state.get(`pile_${pile}`);
+    let pileList = state.get(pile);
     for (let i = 0; i < pileList.length; i++) {
       if (pileList[i].code === code) {
         return state
-          .deleteIn([`pile_${pile}`, i])
+          .deleteIn([pile, i])
           .updateIn([suit], (list) => [...list, card]);
       }
     }

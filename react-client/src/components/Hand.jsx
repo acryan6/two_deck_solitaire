@@ -3,6 +3,7 @@ import { useDrag } from "react-dnd";
 import { useSelector, useDispatch } from "react-redux";
 import { ItemTypes } from "../utils/items";
 import { increment } from "../actions";
+import Card from "./Card.jsx";
 var hand = null;
 var handFromPile = null;
 
@@ -28,37 +29,41 @@ const Hand = (props) => {
       : [handState, handState];
   });
 
-  const getDiv = (card, index, pile) => {
-    return (
-      <div
-        onDoubleClick={() => {
-          card.pile = handFromPile[handFromPile.length - 1];
-          dispatch(increment(card));
-        }}
-        // opacity={isDragging ? "0.2" : "1"}
-        // ref={drag}
-        key={index}
-      >
-        <img
-          src={card.image}
-          title={`${card.value} ${card.suit} ${card.code}`}
-          height="100%"
-          max-width="100%"
-          alt={`Image of the ${card.value.toLowerCase()} of ${card.suit.toLowerCase()} card`}
-          // name="A"
-          style={{ zIndex: index, position: "absolute" }}
-        />
-      </div>
-    );
-  };
+  // const getDiv = (card, index, pile) => {
+  //   return (
+  //     <div
+  //       onDoubleClick={() => {
+  //         dispatch(increment(card));
+  //       }}
+  //       // opacity={isDragging ? "0.2" : "1"}
+  //       // ref={drag}
+  //       key={index}
+  //     >
+  //       <img
+  //         src={card.image}
+  //         title={`${card.value} ${card.suit} ${card.code}`}
+  //         height="100%"
+  //         max-width="100%"
+  //         alt={`Image of the ${card.value.toLowerCase()} of ${card.suit.toLowerCase()} card`}
+  //         // name="A"
+  //         style={{ zIndex: index, position: "absolute" }}
+  //       />
+  //     </div>
+  //   );
+  // };
 
   return (
     <div className="container">
       <div className="row hand-row">
         {hand
-          ? hand.map((card, index) => (
-              <div className="col-sm hand">{getDiv(card, index, "hand")}</div>
-            ))
+          ? hand.map((card, index) => {
+              card.pile = handFromPile;
+              return (
+                <div className="col-sm hand">
+                  <Card card={card} index={index} key={card.code} />
+                </div>
+              );
+            })
           : null}
       </div>
     </div>
