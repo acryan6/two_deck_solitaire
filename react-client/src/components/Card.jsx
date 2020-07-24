@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { increment } from "../actions";
 
 const Card = ({ card, index, pile }) => {
-  const [{ heartIsDragging }, hearts] = useDrag({
+  const [{ heartIsDragging }, hearts, connect] = useDrag({
     item: {
       type: ItemTypes.HEARTS,
       card: card,
@@ -14,6 +14,9 @@ const Card = ({ card, index, pile }) => {
     collect: (monitor) => ({
       heartIsDragging: !!monitor.isDragging(),
     }),
+    previewOptions: {
+      opacity: "1",
+    },
   });
 
   const [{ clubIsDragging }, clubs] = useDrag({
@@ -56,7 +59,14 @@ const Card = ({ card, index, pile }) => {
       onDoubleClick={() => {
         dispatch(increment(card));
       }}
-      // opacity={isDragging ? "0" : "1"}
+      style={
+        heartIsDragging ||
+        clubIsDragging ||
+        diamondIsDragging ||
+        spadeIsDragging
+          ? { opacity: "0" }
+          : { opacity: "1" }
+      }
       ref={
         card.suit === "HEARTS"
           ? hearts
