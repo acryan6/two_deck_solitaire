@@ -5,47 +5,47 @@ import { useDispatch } from "react-redux";
 import { increment } from "../actions";
 
 const Card = ({ card, index, pile }) => {
-  const [{ isDragging1 }, hearts] = useDrag({
+  const [{ heartIsDragging }, hearts] = useDrag({
     item: {
       type: ItemTypes.HEARTS,
       card: card,
       index: index,
     },
     collect: (monitor) => ({
-      isDragging1: !!monitor.isDragging(),
+      heartIsDragging: !!monitor.isDragging(),
     }),
   });
 
-  const [{ isDragging2 }, clubs] = useDrag({
+  const [{ clubIsDragging }, clubs] = useDrag({
     item: {
       type: ItemTypes.CLUBS,
       card: card,
       index: index,
     },
     collect: (monitor) => ({
-      isDragging2: !!monitor.isDragging(),
+      clubIsDragging: !!monitor.isDragging(),
     }),
   });
 
-  const [{ isDragging3 }, diamonds] = useDrag({
+  const [{ diamondIsDragging }, diamonds] = useDrag({
     item: {
       type: ItemTypes.DIAMONDS,
       card: card,
       index: index,
     },
     collect: (monitor) => ({
-      isDragging3: !!monitor.isDragging(),
+      diamondIsDragging: !!monitor.isDragging(),
     }),
   });
 
-  const [{ isDragging4 }, spades] = useDrag({
+  const [{ spadeIsDragging }, spades] = useDrag({
     item: {
       type: ItemTypes.SPADES,
       card: card,
       index: index,
     },
     collect: (monitor) => ({
-      isDragging4: !!monitor.isDragging(),
+      spadeIsDragging: !!monitor.isDragging(),
     }),
   });
 
