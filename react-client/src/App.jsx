@@ -3,7 +3,7 @@ import Board from "./components/Board.jsx";
 import Aggregate from "./components/Aggregate.jsx";
 import Hand from "./components/Hand.jsx";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import { DndProvider } from "react-dnd";
+import { DndProvider, DragDropContext } from "react-dnd";
 
 const App = () => (
   <DndProvider backend={HTML5Backend}>

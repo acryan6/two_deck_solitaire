@@ -16,6 +16,30 @@ const Aggregate = (props) => {
     }),
   });
 
+  const [{ isOver2 }, drop2] = useDrop({
+    accept: ItemTypes.CARD,
+    drop: (item, monitor) => dispatch(increment(item.card)),
+    collect: (monitor) => ({
+      isOver: !!monitor.isOver(),
+    }),
+  });
+
+  const [{ isOver3 }, drop3] = useDrop({
+    accept: ItemTypes.CARD,
+    drop: (item, monitor) => dispatch(increment(item.card)),
+    collect: (monitor) => ({
+      isOver: !!monitor.isOver(),
+    }),
+  });
+
+  const [{ isOver4 }, drop4] = useDrop({
+    accept: ItemTypes.CARD,
+    drop: (item, monitor) => dispatch(increment(item.card)),
+    collect: (monitor) => ({
+      isOver: !!monitor.isOver(),
+    }),
+  });
+
   [hearts, diamonds, spades, clubs] = useSelector((state) => {
     let game = state.get("game");
     return [
@@ -54,13 +78,13 @@ const Aggregate = (props) => {
         <div className="hearts col-sm empty-pile" ref={drop}>
           {hearts.length > 0 ? getDiv(hearts[hearts.length - 1]) : null}
         </div>
-        <div className="clubs col-sm empty-pile" ref={drop}>
+        <div className="clubs col-sm empty-pile" ref={drop2}>
           {clubs.length > 0 ? getDiv(clubs[clubs.length - 1]) : null}
         </div>
-        <div className="diamonds col-sm empty-pile" ref={drop}>
+        <div className="diamonds col-sm empty-pile" ref={drop3}>
           {diamonds.length > 0 ? getDiv(diamonds[diamonds.length - 1]) : null}
         </div>
-        <div className="spades col-sm empty-pile" ref={drop}>
+        <div className="spades col-sm empty-pile" ref={drop4}>
           {spades.length > 0 ? getDiv(spades[spades.length - 1]) : null}
         </div>
       </div>

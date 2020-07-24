@@ -5,14 +5,47 @@ import { useDispatch } from "react-redux";
 import { increment } from "../actions";
 
 const Card = ({ card, index, pile }) => {
-  const [{ isDragging }, drag] = useDrag({
+  const [{ isDragging1 }, hearts] = useDrag({
     item: {
-      type: ItemTypes.CARD,
+      type: ItemTypes.HEARTS,
       card: card,
       index: index,
     },
     collect: (monitor) => ({
-      isDragging: !!monitor.isDragging(),
+      isDragging1: !!monitor.isDragging(),
+    }),
+  });
+
+  const [{ isDragging2 }, clubs] = useDrag({
+    item: {
+      type: ItemTypes.CLUBS,
+      card: card,
+      index: index,
+    },
+    collect: (monitor) => ({
+      isDragging2: !!monitor.isDragging(),
+    }),
+  });
+
+  const [{ isDragging3 }, diamonds] = useDrag({
+    item: {
+      type: ItemTypes.DIAMONDS,
+      card: card,
+      index: index,
+    },
+    collect: (monitor) => ({
+      isDragging3: !!monitor.isDragging(),
+    }),
+  });
+
+  const [{ isDragging4 }, spades] = useDrag({
+    item: {
+      type: ItemTypes.SPADES,
+      card: card,
+      index: index,
+    },
+    collect: (monitor) => ({
+      isDragging4: !!monitor.isDragging(),
     }),
   });
 
@@ -23,8 +56,19 @@ const Card = ({ card, index, pile }) => {
       onDoubleClick={() => {
         dispatch(increment(card));
       }}
-      opacity={isDragging ? "0" : "1"}
-      ref={drag}
+      // opacity={isDragging ? "0" : "1"}
+      ref={() => {
+        switch (card.suit) {
+          case "HEARTS":
+            return hearts;
+          case "CLUBS":
+            return clubs;
+          case "DIAMONDS":
+            return diamonds;
+          case "SPADES":
+            return spades;
+        }
+      }}
       key={index}
     >
       <img
