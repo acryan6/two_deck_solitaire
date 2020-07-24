@@ -8,35 +8,35 @@ var hearts, diamonds, spades, clubs;
 const Aggregate = (props) => {
   const dispatch = useDispatch();
 
-  const [{ isOver }, drop] = useDrop({
+  const [{ isOverHearts }, heartsDrop] = useDrop({
     accept: ItemTypes.HEARTS,
     drop: (item, monitor) => dispatch(increment(item.card)),
     collect: (monitor) => ({
-      isOver: !!monitor.isOver(),
+      isOverHearts: !!monitor.isOver(),
     }),
   });
 
-  const [{ isOver2 }, drop2] = useDrop({
+  const [{ isOverClubs }, clubsDrop] = useDrop({
     accept: ItemTypes.CLUBS,
     drop: (item, monitor) => dispatch(increment(item.card)),
     collect: (monitor) => ({
-      isOver: !!monitor.isOver(),
+      isOverClubs: !!monitor.isOver(),
     }),
   });
 
-  const [{ isOver3 }, drop3] = useDrop({
+  const [{ isOverDiamonds }, diamondsDrop] = useDrop({
     accept: ItemTypes.DIAMONDS,
     drop: (item, monitor) => dispatch(increment(item.card)),
     collect: (monitor) => ({
-      isOver: !!monitor.isOver(),
+      isOverDiamonds: !!monitor.isOver(),
     }),
   });
 
-  const [{ isOver4 }, drop4] = useDrop({
+  const [{ isOverSpades }, spadesDrop] = useDrop({
     accept: ItemTypes.SPADES,
     drop: (item, monitor) => dispatch(increment(item.card)),
     collect: (monitor) => ({
-      isOver: !!monitor.isOver(),
+      isOverSpades: !!monitor.isOver(),
     }),
   });
 
@@ -49,6 +49,8 @@ const Aggregate = (props) => {
       game.get("clubs"),
     ];
   });
+
+  isOverHearts ? console.log("OVER") : console.log("QUE");
 
   const getDiv = (card, index, pile) => (
     <div
@@ -75,16 +77,46 @@ const Aggregate = (props) => {
   return (
     <div className="container">
       <div className="row">
-        <div className="hearts col-sm empty-pile" ref={drop}>
+        <div
+          className="hearts col-sm empty-pile"
+          ref={heartsDrop}
+          style={
+            isOverHearts
+              ? { borderStyle: "solid", borderColor: "yellow" }
+              : null
+          }
+        >
           {hearts.length > 0 ? getDiv(hearts[hearts.length - 1]) : null}
         </div>
-        <div className="clubs col-sm empty-pile" ref={drop2}>
+        <div
+          className="clubs col-sm empty-pile"
+          ref={clubsDrop}
+          style={
+            isOverClubs ? { borderStyle: "solid", borderColor: "yellow" } : null
+          }
+        >
           {clubs.length > 0 ? getDiv(clubs[clubs.length - 1]) : null}
         </div>
-        <div className="diamonds col-sm empty-pile" ref={drop3}>
+        <div
+          className="diamonds col-sm empty-pile"
+          ref={diamondsDrop}
+          style={
+            isOverDiamonds
+              ? { borderStyle: "solid", borderColor: "yellow" }
+              : null
+          }
+        >
           {diamonds.length > 0 ? getDiv(diamonds[diamonds.length - 1]) : null}
         </div>
-        <div className="spades col-sm empty-pile" ref={drop4}>
+        <div
+          className="spades col-sm empty-pile"
+          ref={spadesDrop}
+          style={
+            isOverSpades
+              ? { borderStyle: "solid", borderColor: "yellow" }
+              : null
+          }
+        >
           {spades.length > 0 ? getDiv(spades[spades.length - 1]) : null}
         </div>
       </div>
