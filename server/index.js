@@ -8,11 +8,11 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + "/../react-client/dist"));
 
 app.get("/api/cards", function (req, res) {
-  request("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
+  request("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=2")
     .then((res) => JSON.parse(res))
     .then((deck) => {
       return request(
-        `https://deckofcardsapi.com/api/deck/${deck.deck_id}/draw/?count=52`
+        `https://deckofcardsapi.com/api/deck/${deck.deck_id}/draw/?count=104`
       );
     })
     .then((res) => JSON.parse(res))
