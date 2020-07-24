@@ -4,7 +4,7 @@ import { ItemTypes } from "../utils/items";
 import { useDispatch } from "react-redux";
 import { increment } from "../actions";
 
-const Card = ({ card, index, pile }) => {
+const Card = ({ card, index, pile, height }) => {
   const [{ heartIsDragging }, hearts, connect] = useDrag({
     item: {
       type: ItemTypes.HEARTS,
@@ -83,7 +83,7 @@ const Card = ({ card, index, pile }) => {
       <img
         src={card.image}
         title={`${card.value} ${card.suit} ${card.code}`}
-        height="100%"
+        height={height || "100%"}
         max-width="100%"
         alt={`Image of the ${card.value.toLowerCase()} of ${card.suit.toLowerCase()} card`}
         name="A"

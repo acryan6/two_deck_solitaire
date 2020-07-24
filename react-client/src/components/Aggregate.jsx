@@ -50,8 +50,6 @@ const Aggregate = (props) => {
     ];
   });
 
-  isOverHearts ? console.log("OVER") : console.log("QUE");
-
   const getDiv = (card, index, pile) => (
     <div
       // onDoubleClick={() => {

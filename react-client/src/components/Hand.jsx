@@ -24,7 +24,12 @@ const Hand = (props) => {
               card.pile = handFromPile;
               return (
                 <div className="col-sm hand">
-                  <Card card={card} index={index} key={card.code} />
+                  <Card
+                    card={card}
+                    index={index}
+                    height="75%"
+                    key={card.code}
+                  />
                 </div>
               );
             })

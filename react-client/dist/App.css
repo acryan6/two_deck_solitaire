@@ -20,20 +20,20 @@ body {
 }
 .empty-pile {
   background-color: #0c410f;
-  height: 236px;
-  max-height: 236px;
-  max-width: 170px;
+  height: 10em;
+  max-height: 10em;
+  max-width: 7.2em;
   border-radius: 5%;
-  margin: 0 48px;
+  margin: 0 3em;
   padding: 0 0;
 }
 
 .empty-board-pile {
   background-color: #0c410f;
-  max-height: 200px;
-  max-width: 140px;
+  max-height: 10em;
+  max-width: 7.2em;
   border-radius: 5%;
-  margin: 0 48px;
+  margin: 0 3em;
   padding: 0 0 0 0;
 }
 
@@ -57,7 +57,7 @@ body {
 
 .hand-row {
   justify-content: center;
-  padding-bottom: 50px;
+  padding-bottom: 1em;
 }
 
 .hand {
