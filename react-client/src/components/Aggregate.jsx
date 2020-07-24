@@ -9,7 +9,7 @@ const Aggregate = (props) => {
   const dispatch = useDispatch();
 
   const [{ isOver }, drop] = useDrop({
-    accept: ItemTypes.CARD,
+    accept: ItemTypes.HEARTS,
     drop: (item, monitor) => dispatch(increment(item.card)),
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
@@ -17,7 +17,7 @@ const Aggregate = (props) => {
   });
 
   const [{ isOver2 }, drop2] = useDrop({
-    accept: ItemTypes.CARD,
+    accept: ItemTypes.CLUBS,
     drop: (item, monitor) => dispatch(increment(item.card)),
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
@@ -25,7 +25,7 @@ const Aggregate = (props) => {
   });
 
   const [{ isOver3 }, drop3] = useDrop({
-    accept: ItemTypes.CARD,
+    accept: ItemTypes.DIAMONDS,
     drop: (item, monitor) => dispatch(increment(item.card)),
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
@@ -33,7 +33,7 @@ const Aggregate = (props) => {
   });
 
   const [{ isOver4 }, drop4] = useDrop({
-    accept: ItemTypes.CARD,
+    accept: ItemTypes.SPADES,
     drop: (item, monitor) => dispatch(increment(item.card)),
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),

@@ -57,18 +57,17 @@ const Card = ({ card, index, pile }) => {
         dispatch(increment(card));
       }}
       // opacity={isDragging ? "0" : "1"}
-      ref={() => {
-        switch (card.suit) {
-          case "HEARTS":
-            return hearts;
-          case "CLUBS":
-            return clubs;
-          case "DIAMONDS":
-            return diamonds;
-          case "SPADES":
-            return spades;
-        }
-      }}
+      ref={
+        card.suit === "HEARTS"
+          ? hearts
+          : card.suit === "CLUBS"
+          ? clubs
+          : card.suit === "DIAMONDS"
+          ? diamonds
+          : card.suit === "SPADES"
+          ? spades
+          : null
+      }
       key={index}
     >
       <img
