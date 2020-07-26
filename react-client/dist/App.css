@@ -50,8 +50,8 @@ body {
 
 .draw-stack {
   border-radius: 5%;
-  height: 200px;
-  max-height: 200px;
+  height: 10em;
+  max-height: 10em;
   padding-left: inherit;
 }
 
