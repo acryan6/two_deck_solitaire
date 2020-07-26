@@ -1,4 +1,4 @@
-import { order, dealOrder } from "../utils/order.js";
+import { order, revOrder } from "../utils/order.js";
 import Immutable, { Map, List } from "immutable";
 
 const gameState = {
@@ -17,9 +17,13 @@ const gameState = {
   pile_K: [],
   drawStack: [],
   hearts: [],
+  heartsDown: [],
   clubs: [],
+  clubsDown: [],
   diamonds: [],
+  diamondsDown: [],
   spades: [],
+  spadesDown: [],
   showHand: false,
   hand: null,
 };
@@ -42,7 +46,7 @@ const getInitState = () => {
 const dealCards = (deck) => {
   let position = 0;
   for (let i = 0; i < deck.length; i++) {
-    let pile = dealOrder[position % 13];
+    let pile = order[position % 13];
     gameState[`pile_${pile}`].push(deck[i]);
     let val = deck[i].code[0];
     let addDraw = [];
@@ -70,13 +74,23 @@ const incrementPile = (state, card) => {
   let suitCode = card.code[1];
   let value = card.code[0];
   let code = card.code;
-  if (value === dealOrder[state.get(suit).length]) {
+  if (value === order[state.get(suit).length]) {
     let pileList = state.get(pile);
     for (let i = 0; i < pileList.length; i++) {
       if (pileList[i].code === code) {
         return state
           .deleteIn([pile, i])
           .updateIn([suit], (list) => [...list, card]);
+      }
+    }
+  } else if (value === revOrder[state.get(`${suit}Down`).length]) {
+    console.log("reverse! reverse!");
+    let pileList = state.get(pile);
+    for (let i = 0; i < pileList.length; i++) {
+      if (pileList[i].code === code) {
+        return state
+          .deleteIn([pile, i])
+          .updateIn([`${suit}Down`], (list) => [...list, card]);
       }
     }
   } else return state;
