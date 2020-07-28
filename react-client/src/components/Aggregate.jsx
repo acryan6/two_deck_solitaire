@@ -3,7 +3,14 @@ import { useDrop } from "react-dnd";
 import { useSelector, useDispatch } from "react-redux";
 import { increment } from "../actions";
 import { ItemTypes } from "../utils/items";
-var hearts, diamonds, spades, clubs;
+var hearts,
+  heartsDown,
+  diamonds,
+  diamondsDown,
+  spades,
+  spadesDown,
+  clubs,
+  clubsDown;
 
 const Aggregate = (props) => {
   const dispatch = useDispatch();
@@ -16,11 +23,27 @@ const Aggregate = (props) => {
     }),
   });
 
+  const [{ isOverHeartsDown }, heartsDropDown] = useDrop({
+    accept: ItemTypes.HEARTS,
+    drop: (item, monitor) => dispatch(increment(item.card)),
+    collect: (monitor) => ({
+      isOverHeartsDown: !!monitor.isOver(),
+    }),
+  });
+
   const [{ isOverClubs }, clubsDrop] = useDrop({
     accept: ItemTypes.CLUBS,
     drop: (item, monitor) => dispatch(increment(item.card)),
     collect: (monitor) => ({
       isOverClubs: !!monitor.isOver(),
+    }),
+  });
+
+  const [{ isOverClubsDown }, clubsDropDown] = useDrop({
+    accept: ItemTypes.CLUBS,
+    drop: (item, monitor) => dispatch(increment(item.card)),
+    collect: (monitor) => ({
+      isOverClubsDown: !!monitor.isOver(),
     }),
   });
 
@@ -32,6 +55,14 @@ const Aggregate = (props) => {
     }),
   });
 
+  const [{ isOverDiamondsDown }, diamondsDropDown] = useDrop({
+    accept: ItemTypes.DIAMONDS,
+    drop: (item, monitor) => dispatch(increment(item.card)),
+    collect: (monitor) => ({
+      isOverDiamondsDown: !!monitor.isOver(),
+    }),
+  });
+
   const [{ isOverSpades }, spadesDrop] = useDrop({
     accept: ItemTypes.SPADES,
     drop: (item, monitor) => dispatch(increment(item.card)),
@@ -40,13 +71,34 @@ const Aggregate = (props) => {
     }),
   });
 
-  [hearts, diamonds, spades, clubs] = useSelector((state) => {
+  const [{ isOverSpadesDown }, spadesDropDown] = useDrop({
+    accept: ItemTypes.SPADES,
+    drop: (item, monitor) => dispatch(increment(item.card)),
+    collect: (monitor) => ({
+      isOverSpadesDown: !!monitor.isOver(),
+    }),
+  });
+
+  [
+    hearts,
+    heartsDown,
+    diamonds,
+    diamondsDown,
+    spades,
+    spadesDown,
+    clubs,
+    clubsDown,
+  ] = useSelector((state) => {
     let game = state.get("game");
     return [
       game.get("hearts"),
+      game.get("heartsDown"),
       game.get("diamonds"),
+      game.get("diamondsDown"),
       game.get("spades"),
+      game.get("spadesDown"),
       game.get("clubs"),
+      game.get("clubsDown"),
     ];
   });
 
@@ -87,6 +139,19 @@ const Aggregate = (props) => {
           {hearts.length > 0 ? getDiv(hearts[hearts.length - 1]) : null}
         </div>
         <div
+          className="hearts col-sm empty-pile"
+          ref={heartsDropDown}
+          style={
+            isOverHeartsDown
+              ? { borderStyle: "solid", borderColor: "yellow" }
+              : null
+          }
+        >
+          {heartsDown.length > 0
+            ? getDiv(heartsDown[heartsDown.length - 1])
+            : null}
+        </div>
+        <div
           className="clubs col-sm empty-pile"
           ref={clubsDrop}
           style={
@@ -94,6 +159,19 @@ const Aggregate = (props) => {
           }
         >
           {clubs.length > 0 ? getDiv(clubs[clubs.length - 1]) : null}
+        </div>
+        <div
+          className="clubs col-sm empty-pile"
+          ref={clubsDropDown}
+          style={
+            isOverClubsDown
+              ? { borderStyle: "solid", borderColor: "yellow" }
+              : null
+          }
+        >
+          {clubsDown.length > 0
+            ? getDiv(clubsDown[clubsDown.length - 1])
+            : null}
         </div>
         <div
           className="diamonds col-sm empty-pile"
@@ -107,6 +185,19 @@ const Aggregate = (props) => {
           {diamonds.length > 0 ? getDiv(diamonds[diamonds.length - 1]) : null}
         </div>
         <div
+          className="diamonds col-sm empty-pile"
+          ref={diamondsDropDown}
+          style={
+            isOverDiamondsDown
+              ? { borderStyle: "solid", borderColor: "yellow" }
+              : null
+          }
+        >
+          {diamondsDown.length > 0
+            ? getDiv(diamondsDown[diamondsDown.length - 1])
+            : null}
+        </div>
+        <div
           className="spades col-sm empty-pile"
           ref={spadesDrop}
           style={
@@ -116,6 +207,19 @@ const Aggregate = (props) => {
           }
         >
           {spades.length > 0 ? getDiv(spades[spades.length - 1]) : null}
+        </div>
+        <div
+          className="spades col-sm empty-pile"
+          ref={spadesDropDown}
+          style={
+            isOverSpadesDown
+              ? { borderStyle: "solid", borderColor: "yellow" }
+              : null
+          }
+        >
+          {spadesDown.length > 0
+            ? getDiv(spadesDown[spadesDown.length - 1])
+            : null}
         </div>
       </div>
     </div>
