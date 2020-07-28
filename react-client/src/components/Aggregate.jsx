@@ -1,7 +1,7 @@
 import React from "react";
 import { useDrop } from "react-dnd";
 import { useSelector, useDispatch } from "react-redux";
-import { increment } from "../actions";
+import { increment, decrement } from "../actions";
 import { ItemTypes } from "../utils/items";
 var hearts,
   heartsDown,
@@ -25,7 +25,7 @@ const Aggregate = (props) => {
 
   const [{ isOverHeartsDown }, heartsDropDown] = useDrop({
     accept: ItemTypes.HEARTS,
-    drop: (item, monitor) => dispatch(increment(item.card)),
+    drop: (item, monitor) => dispatch(decrement(item.card)),
     collect: (monitor) => ({
       isOverHeartsDown: !!monitor.isOver(),
     }),
@@ -41,7 +41,7 @@ const Aggregate = (props) => {
 
   const [{ isOverClubsDown }, clubsDropDown] = useDrop({
     accept: ItemTypes.CLUBS,
-    drop: (item, monitor) => dispatch(increment(item.card)),
+    drop: (item, monitor) => dispatch(decrement(item.card)),
     collect: (monitor) => ({
       isOverClubsDown: !!monitor.isOver(),
     }),
@@ -57,7 +57,7 @@ const Aggregate = (props) => {
 
   const [{ isOverDiamondsDown }, diamondsDropDown] = useDrop({
     accept: ItemTypes.DIAMONDS,
-    drop: (item, monitor) => dispatch(increment(item.card)),
+    drop: (item, monitor) => dispatch(decrement(item.card)),
     collect: (monitor) => ({
       isOverDiamondsDown: !!monitor.isOver(),
     }),
@@ -73,7 +73,7 @@ const Aggregate = (props) => {
 
   const [{ isOverSpadesDown }, spadesDropDown] = useDrop({
     accept: ItemTypes.SPADES,
-    drop: (item, monitor) => dispatch(increment(item.card)),
+    drop: (item, monitor) => dispatch(decrement(item.card)),
     collect: (monitor) => ({
       isOverSpadesDown: !!monitor.isOver(),
     }),

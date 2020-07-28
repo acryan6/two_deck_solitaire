@@ -2,7 +2,7 @@ import React from "react";
 import { useDrag } from "react-dnd";
 import { ItemTypes } from "../utils/items";
 import { useDispatch } from "react-redux";
-import { increment } from "../actions";
+import { doubleClick } from "../actions";
 
 const Card = ({ card, index, pile, height }) => {
   const [{ heartIsDragging }, hearts, connect] = useDrag({
@@ -57,7 +57,7 @@ const Card = ({ card, index, pile, height }) => {
   return (
     <div
       onDoubleClick={() => {
-        dispatch(increment(card));
+        dispatch(doubleClick(card));
       }}
       style={
         heartIsDragging ||

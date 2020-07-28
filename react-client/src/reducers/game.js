@@ -67,14 +67,18 @@ const dealCards = (deck) => {
   }
 };
 
-const incrementPile = (state, card) => {
+const incrementPile = (
+  state,
+  card,
+  nextUp,
+  value = card.code[0],
+  suit = card.suit.toLowerCase()
+) => {
   console.log(card);
-  let pile = card.pile;
-  let suit = card.suit.toLowerCase();
-  let suitCode = card.code[1];
-  let value = card.code[0];
-  let code = card.code;
+  nextUp = nextUp || order[state.get(suit).length];
   if (value === order[state.get(suit).length]) {
+    let pile = card.pile;
+    let code = card.code;
     let pileList = state.get(pile);
     for (let i = 0; i < pileList.length; i++) {
       if (pileList[i].code === code) {
@@ -83,8 +87,21 @@ const incrementPile = (state, card) => {
           .updateIn([suit], (list) => [...list, card]);
       }
     }
-  } else if (value === revOrder[state.get(`${suit}Down`).length]) {
-    console.log("reverse! reverse!");
+  } else return state;
+};
+
+const decrementPile = (
+  state,
+  card,
+  nextDown,
+  value = card.code[0],
+  suit = card.suit.toLowerCase()
+) => {
+  console.log(card);
+  nextDown = nextDown || revOrder[state.get(`${suit}Down`).length];
+  if (value === nextDown) {
+    let pile = card.pile;
+    let code = card.code;
     let pileList = state.get(pile);
     for (let i = 0; i < pileList.length; i++) {
       if (pileList[i].code === code) {
@@ -93,6 +110,20 @@ const incrementPile = (state, card) => {
           .updateIn([`${suit}Down`], (list) => [...list, card]);
       }
     }
+  } else return state;
+};
+
+const doubleClick = (state, card) => {
+  let value = card.code[0];
+  let suit = card.suit.toLowerCase();
+  let nextUp = order[state.get(suit).length];
+  let nextDown = revOrder[state.get(`${suit}Down`).length];
+  if (value === nextUp && value === nextDown) {
+    return state;
+  } else if (value === nextUp) {
+    return incrementPile(state, card, nextUp, value, suit);
+  } else if (value === nextDown) {
+    return decrementPile(state, card, nextDown, value, suit);
   } else return state;
 };
 
@@ -108,8 +139,12 @@ const handleDrawStack = (state) => {
 
 const gameReducer = (state = Map().merge(getInitState()), action) => {
   switch (action.type) {
+    case "DOUBLE_CLICK":
+      return doubleClick(state, action.payload);
     case "INCREMENT":
       return incrementPile(state, action.payload);
+    case "DECREMENT":
+      return decrementPile(state, action.payload);
     case "DRAW_STACK":
       return handleDrawStack(state);
     default:

@@ -1,6 +1,20 @@
+export const doubleClick = (arg) => {
+  return {
+    type: "DOUBLE_CLICK",
+    payload: arg,
+  };
+};
+
 export const increment = (arg) => {
   return {
     type: "INCREMENT",
+    payload: arg,
+  };
+};
+
+export const decrement = (arg) => {
+  return {
+    type: "DECREMENT",
     payload: arg,
   };
 };
