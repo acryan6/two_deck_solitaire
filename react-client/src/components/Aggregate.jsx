@@ -127,99 +127,109 @@ const Aggregate = (props) => {
   return (
     <div className="container">
       <div className="row">
-        <div
-          className="hearts col-sm empty-pile"
-          ref={heartsDrop}
-          style={
-            isOverHearts
-              ? { borderStyle: "solid", borderColor: "yellow" }
-              : null
-          }
-        >
-          {hearts.length > 0 ? getDiv(hearts[hearts.length - 1]) : null}
+        <div className="col-sm">
+          <div
+            className="hearts empty-pile"
+            ref={heartsDrop}
+            style={
+              isOverHearts
+                ? { borderStyle: "solid", borderColor: "yellow" }
+                : null
+            }
+          >
+            {hearts.length > 0 ? getDiv(hearts[hearts.length - 1]) : null}
+          </div>
+          <div
+            className="hearts empty-pile"
+            ref={heartsDropDown}
+            style={
+              isOverHeartsDown
+                ? { borderStyle: "solid", borderColor: "yellow" }
+                : null
+            }
+          >
+            {heartsDown.length > 0
+              ? getDiv(heartsDown[heartsDown.length - 1])
+              : null}
+          </div>
         </div>
-        <div
-          className="hearts col-sm empty-pile"
-          ref={heartsDropDown}
-          style={
-            isOverHeartsDown
-              ? { borderStyle: "solid", borderColor: "yellow" }
-              : null
-          }
-        >
-          {heartsDown.length > 0
-            ? getDiv(heartsDown[heartsDown.length - 1])
-            : null}
+        <div className="col-sm">
+          <div
+            className="clubs empty-pile"
+            ref={clubsDrop}
+            style={
+              isOverClubs
+                ? { borderStyle: "solid", borderColor: "yellow" }
+                : null
+            }
+          >
+            {clubs.length > 0 ? getDiv(clubs[clubs.length - 1]) : null}
+          </div>
+          <div
+            className="clubs empty-pile"
+            ref={clubsDropDown}
+            style={
+              isOverClubsDown
+                ? { borderStyle: "solid", borderColor: "yellow" }
+                : null
+            }
+          >
+            {clubsDown.length > 0
+              ? getDiv(clubsDown[clubsDown.length - 1])
+              : null}
+          </div>
         </div>
-        <div
-          className="clubs col-sm empty-pile"
-          ref={clubsDrop}
-          style={
-            isOverClubs ? { borderStyle: "solid", borderColor: "yellow" } : null
-          }
-        >
-          {clubs.length > 0 ? getDiv(clubs[clubs.length - 1]) : null}
+        <div className="col-sm">
+          <div
+            className="diamonds empty-pile"
+            ref={diamondsDrop}
+            style={
+              isOverDiamonds
+                ? { borderStyle: "solid", borderColor: "yellow" }
+                : null
+            }
+          >
+            {diamonds.length > 0 ? getDiv(diamonds[diamonds.length - 1]) : null}
+          </div>
+          <div
+            className="diamonds empty-pile"
+            ref={diamondsDropDown}
+            style={
+              isOverDiamondsDown
+                ? { borderStyle: "solid", borderColor: "yellow" }
+                : null
+            }
+          >
+            {diamondsDown.length > 0
+              ? getDiv(diamondsDown[diamondsDown.length - 1])
+              : null}
+          </div>
         </div>
-        <div
-          className="clubs col-sm empty-pile"
-          ref={clubsDropDown}
-          style={
-            isOverClubsDown
-              ? { borderStyle: "solid", borderColor: "yellow" }
-              : null
-          }
-        >
-          {clubsDown.length > 0
-            ? getDiv(clubsDown[clubsDown.length - 1])
-            : null}
-        </div>
-        <div
-          className="diamonds col-sm empty-pile"
-          ref={diamondsDrop}
-          style={
-            isOverDiamonds
-              ? { borderStyle: "solid", borderColor: "yellow" }
-              : null
-          }
-        >
-          {diamonds.length > 0 ? getDiv(diamonds[diamonds.length - 1]) : null}
-        </div>
-        <div
-          className="diamonds col-sm empty-pile"
-          ref={diamondsDropDown}
-          style={
-            isOverDiamondsDown
-              ? { borderStyle: "solid", borderColor: "yellow" }
-              : null
-          }
-        >
-          {diamondsDown.length > 0
-            ? getDiv(diamondsDown[diamondsDown.length - 1])
-            : null}
-        </div>
-        <div
-          className="spades col-sm empty-pile"
-          ref={spadesDrop}
-          style={
-            isOverSpades
-              ? { borderStyle: "solid", borderColor: "yellow" }
-              : null
-          }
-        >
-          {spades.length > 0 ? getDiv(spades[spades.length - 1]) : null}
-        </div>
-        <div
-          className="spades col-sm empty-pile"
-          ref={spadesDropDown}
-          style={
-            isOverSpadesDown
-              ? { borderStyle: "solid", borderColor: "yellow" }
-              : null
-          }
-        >
-          {spadesDown.length > 0
-            ? getDiv(spadesDown[spadesDown.length - 1])
-            : null}
+        <div className="col-sm">
+          <div
+            className="spades empty-pile"
+            ref={spadesDrop}
+            style={
+              isOverSpades
+                ? { borderStyle: "solid", borderColor: "yellow" }
+                : null
+            }
+          >
+            {spades.length > 0 ? getDiv(spades[spades.length - 1]) : null}
+          </div>
+          <div
+            className="spades empty-pile"
+            ref={spadesDropDown}
+            style={
+              isOverSpadesDown
+                ? { borderStyle: "solid", borderColor: "yellow" }
+                : null
+            }
+          >
+            {spadesDown.length > 0
+              ? getDiv(spadesDown[spadesDown.length - 1])
+              : null}
+          </div>
         </div>
       </div>
     </div>
