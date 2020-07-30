@@ -20,12 +20,13 @@ body {
 }
 .empty-pile {
   background-color: #0c410f;
-  height: 7.2em;
-  max-height: 7.2em;
-  max-width: 10em;
+  height: 10em;
+  max-height: 10em;
+  max-width: 7.2em;
   border-radius: 5%;
   margin: 0.5em 3em;
   padding: 0 0;
+  transform: rotate(90deg);
 }
 
 .empty-board-pile {

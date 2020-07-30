@@ -122,7 +122,6 @@ const Aggregate = (props) => {
         style={{
           zIndex: index,
           position: "absolute",
-          transform: "rotate(90deg)",
         }}
       />
     </div>
@@ -132,17 +131,6 @@ const Aggregate = (props) => {
     <div className="container">
       <div className="row">
         <div className="col-sm">
-          <div
-            className="hearts empty-pile"
-            ref={heartsDrop}
-            style={
-              isOverHearts
-                ? { borderStyle: "solid", borderColor: "yellow" }
-                : null
-            }
-          >
-            {hearts.length > 0 ? getDiv(hearts[hearts.length - 1]) : null}
-          </div>
           <div
             className="hearts empty-pile"
             ref={heartsDropDown}
@@ -156,19 +144,19 @@ const Aggregate = (props) => {
               ? getDiv(heartsDown[heartsDown.length - 1])
               : null}
           </div>
-        </div>
-        <div className="col-sm">
           <div
-            className="clubs empty-pile"
-            ref={clubsDrop}
+            className="hearts empty-pile"
+            ref={heartsDrop}
             style={
-              isOverClubs
+              isOverHearts
                 ? { borderStyle: "solid", borderColor: "yellow" }
                 : null
             }
           >
-            {clubs.length > 0 ? getDiv(clubs[clubs.length - 1]) : null}
+            {hearts.length > 0 ? getDiv(hearts[hearts.length - 1]) : null}
           </div>
+        </div>
+        <div className="col-sm">
           <div
             className="clubs empty-pile"
             ref={clubsDropDown}
@@ -182,19 +170,19 @@ const Aggregate = (props) => {
               ? getDiv(clubsDown[clubsDown.length - 1])
               : null}
           </div>
-        </div>
-        <div className="col-sm">
           <div
-            className="diamonds empty-pile"
-            ref={diamondsDrop}
+            className="clubs empty-pile"
+            ref={clubsDrop}
             style={
-              isOverDiamonds
+              isOverClubs
                 ? { borderStyle: "solid", borderColor: "yellow" }
                 : null
             }
           >
-            {diamonds.length > 0 ? getDiv(diamonds[diamonds.length - 1]) : null}
+            {clubs.length > 0 ? getDiv(clubs[clubs.length - 1]) : null}
           </div>
+        </div>
+        <div className="col-sm">
           <div
             className="diamonds empty-pile"
             ref={diamondsDropDown}
@@ -208,19 +196,19 @@ const Aggregate = (props) => {
               ? getDiv(diamondsDown[diamondsDown.length - 1])
               : null}
           </div>
-        </div>
-        <div className="col-sm">
           <div
-            className="spades empty-pile"
-            ref={spadesDrop}
+            className="diamonds empty-pile"
+            ref={diamondsDrop}
             style={
-              isOverSpades
+              isOverDiamonds
                 ? { borderStyle: "solid", borderColor: "yellow" }
                 : null
             }
           >
-            {spades.length > 0 ? getDiv(spades[spades.length - 1]) : null}
+            {diamonds.length > 0 ? getDiv(diamonds[diamonds.length - 1]) : null}
           </div>
+        </div>
+        <div className="col-sm">
           <div
             className="spades empty-pile"
             ref={spadesDropDown}
@@ -233,6 +221,17 @@ const Aggregate = (props) => {
             {spadesDown.length > 0
               ? getDiv(spadesDown[spadesDown.length - 1])
               : null}
+          </div>
+          <div
+            className="spades empty-pile"
+            ref={spadesDrop}
+            style={
+              isOverSpades
+                ? { borderStyle: "solid", borderColor: "yellow" }
+                : null
+            }
+          >
+            {spades.length > 0 ? getDiv(spades[spades.length - 1]) : null}
           </div>
         </div>
       </div>
