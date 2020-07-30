@@ -12,7 +12,7 @@ const App = () => (
         <div className="row">
           <div className="col-sm title-block">
             <h1>Mini-Moo</h1>
-            <h3>A Form of Devil's Solitaire(?)</h3>
+            <h5>A Form of Devil's Solitaire</h5>
           </div>
           <div className="col-sm">
             <Aggregate />

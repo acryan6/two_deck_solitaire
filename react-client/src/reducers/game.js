@@ -46,6 +46,7 @@ const getInitState = () => {
 const dealCards = (deck) => {
   let position = 0;
   for (let i = 0; i < deck.length; i++) {
+    deck[i].cardNum = i;
     let pile = order[position % 13];
     gameState[`pile_${pile}`].push(deck[i]);
     let val = deck[i].code[0];
@@ -78,10 +79,10 @@ const incrementPile = (
   nextUp = nextUp || order[state.get(suit).length];
   if (value === order[state.get(suit).length]) {
     let pile = card.pile;
-    let code = card.code;
+    let cardNum = card.cardNum;
     let pileList = state.get(pile);
     for (let i = 0; i < pileList.length; i++) {
-      if (pileList[i].code === code) {
+      if (pileList[i].cardNum === cardNum) {
         return state
           .deleteIn([pile, i])
           .updateIn([suit], (list) => [...list, card]);
@@ -101,10 +102,10 @@ const decrementPile = (
   nextDown = nextDown || revOrder[state.get(`${suit}Down`).length];
   if (value === nextDown) {
     let pile = card.pile;
-    let code = card.code;
+    let cardNum = card.cardNum;
     let pileList = state.get(pile);
     for (let i = 0; i < pileList.length; i++) {
-      if (pileList[i].code === code) {
+      if (pileList[i].cardNum === cardNum) {
         return state
           .deleteIn([pile, i])
           .updateIn([`${suit}Down`], (list) => [...list, card]);

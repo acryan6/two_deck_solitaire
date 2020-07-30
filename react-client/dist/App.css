@@ -25,7 +25,7 @@ body {
   max-height: 10em;
   max-width: 7.2em;
   border-radius: 5%;
-  margin: 0 3em;
+  margin: 0 0.1em;
   padding: 0 0;
   transform: rotate(90deg);
 }
@@ -35,7 +35,7 @@ body {
   max-height: 10em;
   max-width: 7.2em;
   border-radius: 5%;
-  margin: 0 3em;
+  margin: 0 2em;
   padding: 0 0 0 0;
 }
 
