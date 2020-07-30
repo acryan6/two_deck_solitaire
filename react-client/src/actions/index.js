@@ -24,3 +24,15 @@ export const drawStack = () => {
     type: "DRAW_STACK",
   };
 };
+
+export const update = () => {
+  return {
+    type: "UPDATE",
+  };
+};
+
+export const pileFinish = () => {
+  return {
+    type: "PILE_FINISH",
+  };
+};
