@@ -1,18 +1,19 @@
 body {
   background: linear-gradient(to bottom, #1a4a1c, #308834 600px);
   color: #fff;
-  height: 100vw;
-  width: 100vw;
+  height: 95vw;
+  width: 95vw;
 }
 
 .top-bar {
-  margin-top: 100px;
-  margin-bottom: 50px;
-  max-width: 1500px;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  max-width: 70vw;
 }
 
 .title-block {
-  max-width: 400px;
+  max-width: 20vw;
+  padding-top: 2em;
 }
 
 .card-stack {
@@ -24,7 +25,7 @@ body {
   max-height: 10em;
   max-width: 7.2em;
   border-radius: 5%;
-  margin: 0.5em 3em;
+  margin: 0 3em;
   padding: 0 0;
   transform: rotate(90deg);
 }
@@ -39,8 +40,8 @@ body {
 }
 
 .board-row {
-  height: 250px;
-  max-height: 250px;
+  height: 11em;
+  max-height: 11em;
   justify-content: center;
 }
 
@@ -58,11 +59,9 @@ body {
 
 .hand-row {
   justify-content: center;
-  padding-bottom: 1em;
 }
 
 .hand {
-  height: 220px;
-  max-width: 190px;
-  padding-bottom: 50px;
+  height: 12em;
+  max-width: 8em;
 }
