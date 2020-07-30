@@ -119,7 +119,11 @@ const Aggregate = (props) => {
         max-width="100%"
         alt={`Image of the ${card.value.toLowerCase()} of ${card.suit.toLowerCase()} card`}
         // name="A"
-        style={{ zIndex: index, position: "absolute" }}
+        style={{
+          zIndex: index,
+          position: "absolute",
+          transform: "rotate(90deg)",
+        }}
       />
     </div>
   );
