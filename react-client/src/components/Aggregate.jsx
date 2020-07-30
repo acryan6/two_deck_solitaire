@@ -111,6 +111,7 @@ const Aggregate = (props) => {
       // opacity={isDragging ? "0.2" : "1"}
       // ref={drag}
       key={index}
+      cardNum={card.cardNum}
     >
       <img
         src={card.image}

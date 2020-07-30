@@ -78,7 +78,8 @@ const Card = ({ card, index, pile, height }) => {
           ? spades
           : null
       }
-      key={index}
+      key={card.cardNum}
+      cardNum={card.cardNum}
     >
       <img
         src={card.image}

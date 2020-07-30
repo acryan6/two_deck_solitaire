@@ -60,6 +60,7 @@ const dealCards = (deck) => {
     }
     for (let j = i + 1; j < i + 1 + drawCount; j++) {
       if (deck[j]) {
+        deck[j].cardNum = j;
         gameState.drawStack.push(deck[j]);
       }
     }
