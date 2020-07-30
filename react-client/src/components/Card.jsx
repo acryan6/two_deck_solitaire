@@ -2,7 +2,7 @@ import React from "react";
 import { useDrag } from "react-dnd";
 import { ItemTypes } from "../utils/items";
 import { useDispatch } from "react-redux";
-import { doubleClick } from "../actions";
+import { doubleClick, update } from "../actions";
 
 const Card = ({ card, index, pile, height }) => {
   const [{ heartIsDragging }, hearts, connect] = useDrag({

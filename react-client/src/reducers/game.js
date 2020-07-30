@@ -1,6 +1,5 @@
 import { order, revOrder } from "../utils/order.js";
 import Immutable, { Map, List } from "immutable";
-
 const gameState = {
   pile_A: [],
   pile_2: [],
@@ -26,6 +25,7 @@ const gameState = {
   spadesDown: [],
   showHand: false,
   hand: null,
+  score: 104,
 };
 
 const getInitState = () => {
@@ -78,15 +78,22 @@ const incrementPile = (
 ) => {
   console.log(card);
   nextUp = nextUp || order[state.get(suit).length];
-  if (value === order[state.get(suit).length]) {
+  if (value === nextUp) {
     let pile = card.pile;
     let cardNum = card.cardNum;
     let pileList = state.get(pile);
     for (let i = 0; i < pileList.length; i++) {
       if (pileList[i].cardNum === cardNum) {
-        return state
-          .deleteIn([pile, i])
-          .updateIn([suit], (list) => [...list, card]);
+        if (state.get(suit).length === 13) {
+          return state
+            .deleteIn([pile, i])
+            .updateIn([suit], (list) => [...list, card])
+            .update("score", (score) => score - 6);
+        } else
+          return state
+            .deleteIn([pile, i])
+            .updateIn([suit], (list) => [...list, card])
+            .update("score", (score) => score - 1);
       }
     }
   } else return state;
@@ -107,9 +114,16 @@ const decrementPile = (
     let pileList = state.get(pile);
     for (let i = 0; i < pileList.length; i++) {
       if (pileList[i].cardNum === cardNum) {
-        return state
-          .deleteIn([pile, i])
-          .updateIn([`${suit}Down`], (list) => [...list, card]);
+        if (state.get(`${suit}Down`).length === 13) {
+          return state
+            .deleteIn([pile, i])
+            .updateIn([`${suit}Down`], (list) => [...list, card])
+            .update("score", (score) => score - 6);
+        } else
+          return state
+            .deleteIn([pile, i])
+            .updateIn([`${suit}Down`], (list) => [...list, card])
+            .update("score", (score) => score - 1);
       }
     }
   } else return state;
