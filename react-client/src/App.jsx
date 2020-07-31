@@ -4,29 +4,37 @@ import Aggregate from "./components/Aggregate.jsx";
 import Hand from "./components/Hand.jsx";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { DndProvider, DragDropContext } from "react-dnd";
+import { useSelector } from "react-redux";
 
-const App = () => (
-  <DndProvider backend={HTML5Backend}>
-    <div className="browser">
-      <div className="container top-bar">
-        <div className="row">
-          <div className="col-sm title-block">
-            <h1>Mini-Moo</h1>
-            <h5>A Form of Devil's Solitaire</h5>
-          </div>
-          <div className="col-sm">
-            <Aggregate />
+const App = () => {
+  const [score, drawLength] = useSelector((state) => {
+    let game = state.get("game");
+    return [game.get("score"), game.get("drawStack").length];
+  });
+  return (
+    <DndProvider backend={HTML5Backend}>
+      <div className="browser">
+        <div className="container top-bar">
+          <div className="row">
+            <div className="col-sm title-block">
+              <h1>Mini-Moo</h1>
+              <h5>A Form of Devil's Solitaire</h5>
+              {drawLength === 0 ? <p>Your score is {score}</p> : null}
+            </div>
+            <div className="col-sm">
+              <Aggregate />
+            </div>
           </div>
         </div>
-      </div>
-      <div className="container">
-        <div className="row hand-row">
-          <Hand />
+        <div className="container">
+          <div className="row hand-row">
+            <Hand />
+          </div>
         </div>
+        <Board />
       </div>
-      <Board />
-    </div>
-  </DndProvider>
-);
+    </DndProvider>
+  );
+};
 
 export default App;
