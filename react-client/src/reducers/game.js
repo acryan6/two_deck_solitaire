@@ -1,5 +1,13 @@
 import { order, revOrder } from "../utils/order.js";
 import Immutable, { Map, List } from "immutable";
+import { use } from "redux";
+import {
+  update,
+  pileFinish,
+  apiCallStart,
+  apiCallSuccess,
+  apiCallFailure,
+} from "../actions";
 const gameState = {
   pile_A: [],
   pile_2: [],
@@ -85,15 +93,16 @@ const incrementPile = (
     for (let i = 0; i < pileList.length; i++) {
       if (pileList[i].cardNum === cardNum) {
         if (state.get(suit).length === 13) {
+          dispatch(pileFinish());
           return state
             .deleteIn([pile, i])
-            .updateIn([suit], (list) => [...list, card])
-            .update("score", (score) => score - 6);
-        } else
+            .updateIn([suit], (list) => [...list, card]);
+        } else {
+          dispatch(update());
           return state
             .deleteIn([pile, i])
-            .updateIn([suit], (list) => [...list, card])
-            .update("score", (score) => score - 1);
+            .updateIn([suit], (list) => [...list, card]);
+        }
       }
     }
   } else return state;
@@ -115,15 +124,16 @@ const decrementPile = (
     for (let i = 0; i < pileList.length; i++) {
       if (pileList[i].cardNum === cardNum) {
         if (state.get(`${suit}Down`).length === 13) {
+          dispatch(pileFinish());
           return state
             .deleteIn([pile, i])
-            .updateIn([`${suit}Down`], (list) => [...list, card])
-            .update("score", (score) => score - 6);
-        } else
+            .updateIn([`${suit}Down`], (list) => [...list, card]);
+        } else {
+          dispatch(update());
           return state
             .deleteIn([pile, i])
-            .updateIn([`${suit}Down`], (list) => [...list, card])
-            .update("score", (score) => score - 1);
+            .updateIn([`${suit}Down`], (list) => [...list, card]);
+        }
       }
     }
   } else return state;
@@ -163,6 +173,10 @@ const gameReducer = (state = Map().merge(getInitState()), action) => {
       return decrementPile(state, action.payload);
     case "DRAW_STACK":
       return handleDrawStack(state);
+    case "PILE_FINISH":
+      return state.update("score", (score) => score - 6);
+    case "UPDATE":
+      return state.update("score", (score) => score - 1);
     default:
       return state;
   }
