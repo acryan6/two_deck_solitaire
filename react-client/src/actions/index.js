@@ -36,3 +36,23 @@ export const pileFinish = () => {
     type: "PILE_FINISH",
   };
 };
+
+export const apiCallStart = () => {
+  return {
+    type: "API_CALL_START",
+  };
+};
+
+export const apiCallSuccess = (data) => {
+  return {
+    type: "API_CALL_SUCCESS",
+    payload: data,
+  };
+};
+
+export const apiCallFailure = (err) => {
+  return {
+    type: "API_CALL_FAILURE",
+    payload: err,
+  };
+};

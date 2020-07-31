@@ -4,24 +4,9 @@ import drawStackImg from "./Card_back.png";
 import Card from "./Card.jsx";
 import { ItemTypes } from "../utils/items";
 import { increment, drawStack } from "../actions";
-var pile_A,
-  pile_2,
-  pile_3,
-  pile_4,
-  pile_5,
-  pile_6,
-  pile_7,
-  pile_8,
-  pile_9,
-  pile_0,
-  pile_J,
-  pile_Q,
-  pile_K,
-  hand,
-  dsLength;
 
 const Board = (props) => {
-  [
+  const [
     pile_A,
     pile_2,
     pile_3,
