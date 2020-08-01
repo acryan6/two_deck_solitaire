@@ -5,6 +5,7 @@ import Hand from "./components/Hand.jsx";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { DndProvider, DragDropContext } from "react-dnd";
 import { useSelector } from "react-redux";
+import Tutorial from "./components/Tutorial.jsx";
 
 const App = () => {
   const [score, drawLength] = useSelector((state) => [
@@ -20,6 +21,7 @@ const App = () => {
               <h1>Mini-Moo</h1>
               <h5>A Form of Devil's Solitaire</h5>
               {drawLength === 0 ? <p>Your score is {score}</p> : null}
+              <Tutorial />
             </div>
             <div className="col-sm">
               <Aggregate />
