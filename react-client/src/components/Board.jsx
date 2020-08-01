@@ -22,26 +22,23 @@ const Board = (props) => {
     pile_K,
     hand,
     dsLength,
-  ] = useSelector((state) => {
-    let game = state.get("game");
-    return [
-      game.get("pile_A"),
-      game.get("pile_2"),
-      game.get("pile_3"),
-      game.get("pile_4"),
-      game.get("pile_5"),
-      game.get("pile_6"),
-      game.get("pile_7"),
-      game.get("pile_8"),
-      game.get("pile_9"),
-      game.get("pile_0"),
-      game.get("pile_J"),
-      game.get("pile_Q"),
-      game.get("pile_K"),
-      game.get("hand"),
-      game.get("drawStack").length,
-    ];
-  });
+  ] = useSelector((state) => [
+    state.getIn(["game", "pile_A"]),
+    state.getIn(["game", "pile_2"]),
+    state.getIn(["game", "pile_3"]),
+    state.getIn(["game", "pile_4"]),
+    state.getIn(["game", "pile_5"]),
+    state.getIn(["game", "pile_6"]),
+    state.getIn(["game", "pile_7"]),
+    state.getIn(["game", "pile_8"]),
+    state.getIn(["game", "pile_9"]),
+    state.getIn(["game", "pile_0"]),
+    state.getIn(["game", "pile_J"]),
+    state.getIn(["game", "pile_Q"]),
+    state.getIn(["game", "pile_K"]),
+    state.getIn(["game", "hand"]),
+    state.getIn(["game", "drawStack"]).length,
+  ]);
 
   const dispatch = useDispatch();
 

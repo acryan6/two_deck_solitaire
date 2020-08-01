@@ -7,10 +7,10 @@ import { DndProvider, DragDropContext } from "react-dnd";
 import { useSelector } from "react-redux";
 
 const App = () => {
-  const [score, drawLength] = useSelector((state) => {
-    let game = state.get("game");
-    return [game.get("score"), game.get("drawStack").length];
-  });
+  const [score, drawLength] = useSelector((state) => [
+    state.getIn(["game", "score"]),
+    state.getIn(["game", "drawStack"]).length,
+  ]);
   return (
     <DndProvider backend={HTML5Backend}>
       <div className="browser">

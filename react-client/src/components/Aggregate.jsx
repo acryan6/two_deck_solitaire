@@ -3,14 +3,14 @@ import { useDrop } from "react-dnd";
 import { useSelector, useDispatch } from "react-redux";
 import { increment, decrement, update, pileFinish } from "../actions";
 import { ItemTypes } from "../utils/items";
-var hearts,
-  heartsDown,
-  diamonds,
-  diamondsDown,
-  spades,
-  spadesDown,
-  clubs,
-  clubsDown;
+// var hearts,
+//   heartsDown,
+//   diamonds,
+//   diamondsDown,
+//   spades,
+//   spadesDown,
+//   clubs,
+//   clubsDown;
 
 const Aggregate = (props) => {
   const dispatch = useDispatch();
@@ -119,7 +119,7 @@ const Aggregate = (props) => {
     }),
   });
 
-  [
+  const [
     hearts,
     heartsDown,
     diamonds,
@@ -128,19 +128,16 @@ const Aggregate = (props) => {
     spadesDown,
     clubs,
     clubsDown,
-  ] = useSelector((state) => {
-    let game = state.get("game");
-    return [
-      game.get("hearts"),
-      game.get("heartsDown"),
-      game.get("diamonds"),
-      game.get("diamondsDown"),
-      game.get("spades"),
-      game.get("spadesDown"),
-      game.get("clubs"),
-      game.get("clubsDown"),
-    ];
-  });
+  ] = useSelector((state) => [
+    state.getIn(["game", "hearts"]),
+    state.getIn(["game", "heartsDown"]),
+    state.getIn(["game", "diamonds"]),
+    state.getIn(["game", "diamondsDown"]),
+    state.getIn(["game", "spades"]),
+    state.getIn(["game", "spadesDown"]),
+    state.getIn(["game", "clubs"]),
+    state.getIn(["game", "clubsDown"]),
+  ]);
 
   const getDiv = (card, index, pile) => (
     <div
