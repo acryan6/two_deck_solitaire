@@ -27,6 +27,7 @@ const gameState = Map({
   showHand: false,
   hand: null,
   score: 104,
+  isLoading: false,
 });
 
 // const getInitState = () => {
@@ -169,6 +170,12 @@ const gameReducer = (state = gameState, action) => {
       return state.update("score", (score) => score - 6);
     case "UPDATE":
       return state.update("score", (score) => score - 1);
+    case "API_CALL_START":
+      return state.update("isLoading", (bool) => !bool);
+    case "API_CALL_SUCCESS":
+      return action.payload;
+    case "API_CALL_FAILURE":
+      return state;
     default:
       return state;
   }

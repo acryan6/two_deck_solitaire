@@ -28,6 +28,7 @@ const gameState = {
   showHand: false,
   hand: null,
   score: 104,
+  isLoading: false,
 };
 
 const getInitState = () => {
