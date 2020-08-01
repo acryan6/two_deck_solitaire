@@ -43,10 +43,10 @@ export const apiCallStart = () => {
   };
 };
 
-export const apiCallSuccess = (data) => {
+export const apiCallSuccess = (gameState) => {
   return {
     type: "API_CALL_SUCCESS",
-    payload: data,
+    payload: gameState,
   };
 };
 

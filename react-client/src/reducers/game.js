@@ -1,81 +1,74 @@
 import { order, revOrder } from "../utils/order.js";
 import Immutable, { Map, List } from "immutable";
-import { use } from "redux";
-import {
-  update,
-  pileFinish,
-  apiCallStart,
-  apiCallSuccess,
-  apiCallFailure,
-} from "../actions";
-const gameState = {
-  pile_A: [],
-  pile_2: [],
-  pile_3: [],
-  pile_4: [],
-  pile_5: [],
-  pile_6: [],
-  pile_7: [],
-  pile_8: [],
-  pile_9: [],
-  pile_0: [],
-  pile_J: [],
-  pile_Q: [],
-  pile_K: [],
-  drawStack: [],
-  hearts: [],
-  heartsDown: [],
-  clubs: [],
-  clubsDown: [],
-  diamonds: [],
-  diamondsDown: [],
-  spades: [],
-  spadesDown: [],
+import getInitState from "./api";
+const gameState = Map({
+  pile_A: List([]),
+  pile_2: List([]),
+  pile_3: List([]),
+  pile_4: List([]),
+  pile_5: List([]),
+  pile_6: List([]),
+  pile_7: List([]),
+  pile_8: List([]),
+  pile_9: List([]),
+  pile_0: List([]),
+  pile_J: List([]),
+  pile_Q: List([]),
+  pile_K: List([]),
+  drawStack: List([]),
+  hearts: List([]),
+  heartsDown: List([]),
+  clubs: List([]),
+  clubsDown: List([]),
+  diamonds: List([]),
+  diamondsDown: List([]),
+  spades: List([]),
+  spadesDown: List([]),
   showHand: false,
   hand: null,
   score: 104,
-};
+});
 
-const getInitState = () => {
-  fetch("/api/cards")
-    .then((res) => res.json())
-    .then((data) => {
-      dealCards(data);
-      for (let key in gameState) {
-        if (Array.isArray(gameState[key])) {
-          gameState[key] = List().concat(gameState[key]);
-        }
-      }
-    })
-    .catch((err) => console.log(err));
-  return gameState;
-};
+// const getInitState = () => {
+//   fetch("/api/cards")
+//     .then((res) => res.json())
+//     .then((data) => {
+//       dealCards(data);
+//       for (let key in gameState) {
+//         if (Array.isArray(gameState[key])) {
+//           gameState[key] = List().concat(gameState[key]);
+//         }
+//       }
+//     })
+//     .catch((err) => console.log(err));
+//   return gameState;
+// };
 
-const dealCards = (deck) => {
-  let position = 0;
-  for (let i = 0; i < deck.length; i++) {
-    deck[i].cardNum = i;
-    let pile = order[position % 13];
-    gameState[`pile_${pile}`].push(deck[i]);
-    let val = deck[i].code[0];
-    let addDraw = [];
-    let drawCount = val === pile ? 1 : 0;
-    if (val === "A") {
-      drawCount += 2;
-    }
-    if (val === "K" || pile === "K" || pile === "0") {
-      drawCount++;
-    }
-    for (let j = i + 1; j < i + 1 + drawCount; j++) {
-      if (deck[j]) {
-        deck[j].cardNum = j;
-        gameState.drawStack.push(deck[j]);
-      }
-    }
-    i += drawCount;
-    position++;
-  }
-};
+// const dealCards = (deck) => {
+//   let position = 0;
+//   for (let i = 0; i < deck.length; i++) {
+//     deck[i].cardNum = i;
+//     let pile = order[position % 13];
+//     gameState[`pile_${pile}`].push(deck[i]);
+//     let val = deck[i].code[0];
+//     let addDraw = [];
+//     let drawCount = val === pile ? 1 : 0;
+//     if (val === "A") {
+//       drawCount += 2;
+//     }
+//     if (val === "K" || pile === "K" || pile === "0") {
+//       drawCount++;
+//     }
+//     for (let j = i + 1; j < i + 1 + drawCount; j++) {
+//       if (deck[j]) {
+//         deck[j].cardNum = j;
+//         gameState.drawStack.push(deck[j]);
+//       }
+//     }
+//     i += drawCount;
+//     position++;
+//   }
+// };
 
 const incrementPile = (
   state,
@@ -93,16 +86,15 @@ const incrementPile = (
     for (let i = 0; i < pileList.length; i++) {
       if (pileList[i].cardNum === cardNum) {
         if (state.get(suit).length === 13) {
-          dispatch(pileFinish());
           return state
             .deleteIn([pile, i])
-            .updateIn([suit], (list) => [...list, card]);
-        } else {
-          dispatch(update());
+            .updateIn([suit], (list) => [...list, card])
+            .update("score", (score) => score - 6);
+        } else
           return state
             .deleteIn([pile, i])
-            .updateIn([suit], (list) => [...list, card]);
-        }
+            .updateIn([suit], (list) => [...list, card])
+            .update("score", (score) => score - 1);
       }
     }
   } else return state;
@@ -124,15 +116,15 @@ const decrementPile = (
     for (let i = 0; i < pileList.length; i++) {
       if (pileList[i].cardNum === cardNum) {
         if (state.get(`${suit}Down`).length === 13) {
-          dispatch(pileFinish());
           return state
             .deleteIn([pile, i])
-            .updateIn([`${suit}Down`], (list) => [...list, card]);
+            .updateIn([`${suit}Down`], (list) => [...list, card])
+            .update("score", (score) => score - 6);
         } else {
-          dispatch(update());
           return state
             .deleteIn([pile, i])
-            .updateIn([`${suit}Down`], (list) => [...list, card]);
+            .updateIn([`${suit}Down`], (list) => [...list, card])
+            .update("score", (score) => score - 1);
         }
       }
     }
@@ -163,7 +155,7 @@ const handleDrawStack = (state) => {
     .set("hand", `pile_${val}`);
 };
 
-const gameReducer = (state = Map().merge(getInitState()), action) => {
+const gameReducer = (state = gameState, action) => {
   switch (action.type) {
     case "DOUBLE_CLICK":
       return doubleClick(state, action.payload);
