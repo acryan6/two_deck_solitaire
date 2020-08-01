@@ -50,7 +50,7 @@ const Board = (props) => {
             ? null
             : pile_A.map((card, index) => {
                 card.pile = "pile_A";
-                return <Card card={card} index={index} key={card.code} />;
+                return <Card card={card} index={index} key={card.cardNum} />;
               })}
         </div>
         <div className="col-sm card-stack empty-board-pile">
@@ -58,7 +58,7 @@ const Board = (props) => {
             ? null
             : pile_2.map((card, index) => {
                 card.pile = "pile_2";
-                return <Card card={card} index={index} key={card.code} />;
+                return <Card card={card} index={index} key={card.cardNum} />;
               })}
         </div>
         <div className="col-sm card-stack empty-board-pile">
@@ -66,7 +66,7 @@ const Board = (props) => {
             ? null
             : pile_3.map((card, index) => {
                 card.pile = "pile_3";
-                return <Card card={card} index={index} key={card.code} />;
+                return <Card card={card} index={index} key={card.cardNum} />;
               })}
         </div>
         <div className="col-sm card-stack empty-board-pile">
@@ -74,7 +74,7 @@ const Board = (props) => {
             ? null
             : pile_4.map((card, index) => {
                 card.pile = "pile_4";
-                return <Card card={card} index={index} key={card.code} />;
+                return <Card card={card} index={index} key={card.cardNum} />;
               })}
         </div>
         <div className="col-sm card-stack empty-board-pile">
@@ -82,7 +82,7 @@ const Board = (props) => {
             ? null
             : pile_5.map((card, index) => {
                 card.pile = "pile_5";
-                return <Card card={card} index={index} key={card.code} />;
+                return <Card card={card} index={index} key={card.cardNum} />;
               })}
         </div>
         <div className="col-sm card-stack empty-board-pile">
@@ -90,7 +90,7 @@ const Board = (props) => {
             ? null
             : pile_6.map((card, index) => {
                 card.pile = "pile_6";
-                return <Card card={card} index={index} key={card.code} />;
+                return <Card card={card} index={index} key={card.cardNum} />;
               })}
         </div>
         <div className="col-sm card-stack empty-board-pile">
@@ -98,7 +98,7 @@ const Board = (props) => {
             ? null
             : pile_7.map((card, index) => {
                 card.pile = "pile_7";
-                return <Card card={card} index={index} key={card.code} />;
+                return <Card card={card} index={index} key={card.cardNum} />;
               })}
         </div>
       </div>
@@ -108,7 +108,7 @@ const Board = (props) => {
             ? null
             : pile_8.map((card, index) => {
                 card.pile = "pile_8";
-                return <Card card={card} index={index} key={card.code} />;
+                return <Card card={card} index={index} key={card.cardNum} />;
               })}
         </div>
         <div className="col-sm card-stack empty-board-pile">
@@ -116,7 +116,7 @@ const Board = (props) => {
             ? null
             : pile_9.map((card, index) => {
                 card.pile = "pile_9";
-                return <Card card={card} index={index} key={card.code} />;
+                return <Card card={card} index={index} key={card.cardNum} />;
               })}
         </div>
         <div className="col-sm card-stack empty-board-pile">
@@ -124,7 +124,7 @@ const Board = (props) => {
             ? null
             : pile_0.map((card, index) => {
                 card.pile = "pile_0";
-                return <Card card={card} index={index} key={card.code} />;
+                return <Card card={card} index={index} key={card.cardNum} />;
               })}
         </div>
         <div
@@ -140,7 +140,7 @@ const Board = (props) => {
             ? null
             : pile_J.map((card, index) => {
                 card.pile = "pile_J";
-                return <Card card={card} index={index} key={card.code} />;
+                return <Card card={card} index={index} key={card.cardNum} />;
               })}
         </div>
         <div className="col-sm card-stack empty-board-pile">
@@ -148,7 +148,7 @@ const Board = (props) => {
             ? null
             : pile_Q.map((card, index) => {
                 card.pile = "pile_Q";
-                return <Card card={card} index={index} key={card.code} />;
+                return <Card card={card} index={index} key={card.cardNum} />;
               })}
         </div>
         <div className="col-sm card-stack empty-board-pile">
@@ -156,7 +156,7 @@ const Board = (props) => {
             ? null
             : pile_K.map((card, index) => {
                 card.pile = "pile_K";
-                return <Card card={card} index={index} key={card.code} />;
+                return <Card card={card} index={index} key={card.cardNum} />;
               })}
         </div>
       </div>

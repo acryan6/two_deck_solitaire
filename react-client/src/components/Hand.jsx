@@ -28,7 +28,7 @@ const Hand = (props) => {
                     card={card}
                     index={index}
                     height="75%"
-                    key={card.code}
+                    key={card.cardnum}
                   />
                 </div>
               );

@@ -132,23 +132,12 @@ const Aggregate = (props) => {
   ]);
 
   const getDiv = (card, index, pile) => (
-    <div
-      // onDoubleClick={() => {
-      //   card.pile = pile;
-      //   dispatch(increment(card));
-      // }}
-      // opacity={isDragging ? "0.2" : "1"}
-      // ref={drag}
-      key={index}
-      cardNum={card.cardNum}
-    >
+    <div key={index} cardnum={card.cardNum}>
       <img
         src={card.image}
-        title={`${card.value} ${card.suit} ${card.code}`}
         height="100%"
         max-width="100%"
         alt={`Image of the ${card.value.toLowerCase()} of ${card.suit.toLowerCase()} card`}
-        // name="A"
         style={{
           zIndex: index,
           position: "absolute",

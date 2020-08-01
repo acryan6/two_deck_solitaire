@@ -79,15 +79,13 @@ const Card = ({ card, index, pile, height }) => {
           : null
       }
       key={card.cardNum}
-      cardNum={card.cardNum}
+      cardnum={card.cardNum}
     >
       <img
         src={card.image}
-        title={`${card.value} ${card.suit} ${card.code}`}
         height={height || "100%"}
         max-width="100%"
         alt={`Image of the ${card.value.toLowerCase()} of ${card.suit.toLowerCase()} card`}
-        name="A"
         style={{ zIndex: index, position: "absolute" }}
       />
     </div>
