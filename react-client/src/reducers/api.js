@@ -2,7 +2,7 @@ import { apiCallStart, apiCallSuccess, apiCallFailure } from "../actions";
 import { Map, List } from "immutable";
 import { order } from "../utils/order.js";
 
-const gameState = {
+let gameState = {
   pile_A: [],
   pile_2: [],
   pile_3: [],
@@ -38,7 +38,7 @@ const getInitState = () => {
       .then((res) => res.json())
       .then((data) => {
         dealCards(data);
-        dispatch(apiCallSuccess(gameState));
+        dispatch(apiCallSuccess(Map().merge(gameState)));
         for (let key in gameState) {
           if (Array.isArray(gameState[key])) {
             gameState[key] = List().concat(gameState[key]);

@@ -147,6 +147,7 @@ const doubleClick = (state, card) => {
 };
 
 const handleDrawStack = (state) => {
+  console.log(Map.isMap(state));
   let stack = state.get("drawStack");
   let draw = stack[stack.length - 1];
   let val = draw.code[0];

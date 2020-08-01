@@ -3,14 +3,6 @@ import { useDrop } from "react-dnd";
 import { useSelector, useDispatch } from "react-redux";
 import { increment, decrement, update, pileFinish } from "../actions";
 import { ItemTypes } from "../utils/items";
-// var hearts,
-//   heartsDown,
-//   diamonds,
-//   diamondsDown,
-//   spades,
-//   spadesDown,
-//   clubs,
-//   clubsDown;
 
 const Aggregate = (props) => {
   const dispatch = useDispatch();
