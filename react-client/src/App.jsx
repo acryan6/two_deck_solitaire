@@ -21,7 +21,7 @@ const App = () => {
               <h1>Mini-Moo</h1>
               <h5>A Form of Devil's Solitaire</h5>
               {drawLength === 0 ? <p>Your score is {score}</p> : null}
-              <Tutorial />
+              {score >= 100 ? <Tutorial /> : null}
             </div>
             <div className="col-sm">
               <Aggregate />

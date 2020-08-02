@@ -8,7 +8,7 @@ const Tutorial = () => (
       data-toggle="modal"
       data-target="#tutorial"
     >
-      Tutorial
+      Click for tutorial
     </button>
 
     <div
