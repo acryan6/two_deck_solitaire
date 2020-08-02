@@ -10,10 +10,7 @@ const Aggregate = (props) => {
   const [{ isOverHearts }, heartsDrop] = useDrop({
     accept: ItemTypes.HEARTS,
     drop: (item, monitor) => {
-      dispatch(
-        increment(item.card),
-        hearts.length === 13 ? dispatch(pileFinish()) : dispatch(update())
-      );
+      dispatch(increment(item.card));
     },
     collect: (monitor) => ({
       isOverHearts: !!monitor.isOver(),
@@ -23,10 +20,7 @@ const Aggregate = (props) => {
   const [{ isOverHeartsDown }, heartsDropDown] = useDrop({
     accept: ItemTypes.HEARTS,
     drop: (item, monitor) => {
-      dispatch(
-        decrement(item.card),
-        heartsDown.length === 13 ? dispatch(pileFinish()) : dispatch(update())
-      );
+      dispatch(decrement(item.card));
     },
     collect: (monitor) => ({
       isOverHeartsDown: !!monitor.isOver(),
@@ -36,10 +30,7 @@ const Aggregate = (props) => {
   const [{ isOverClubs }, clubsDrop] = useDrop({
     accept: ItemTypes.CLUBS,
     drop: (item, monitor) => {
-      dispatch(
-        increment(item.card),
-        clubs.length === 13 ? dispatch(pileFinish()) : dispatch(update())
-      );
+      dispatch(increment(item.card));
     },
     collect: (monitor) => ({
       isOverClubs: !!monitor.isOver(),
@@ -49,10 +40,7 @@ const Aggregate = (props) => {
   const [{ isOverClubsDown }, clubsDropDown] = useDrop({
     accept: ItemTypes.CLUBS,
     drop: (item, monitor) => {
-      dispatch(
-        decrement(item.card),
-        clubsDown.length === 13 ? dispatch(pileFinish()) : dispatch(update())
-      );
+      dispatch(decrement(item.card));
     },
     collect: (monitor) => ({
       isOverClubsDown: !!monitor.isOver(),
@@ -62,10 +50,7 @@ const Aggregate = (props) => {
   const [{ isOverDiamonds }, diamondsDrop] = useDrop({
     accept: ItemTypes.DIAMONDS,
     drop: (item, monitor) => {
-      dispatch(
-        increment(item.card),
-        diamonds.length === 13 ? dispatch(pileFinish()) : dispatch(update())
-      );
+      dispatch(increment(item.card));
     },
     collect: (monitor) => ({
       isOverDiamonds: !!monitor.isOver(),
@@ -75,10 +60,7 @@ const Aggregate = (props) => {
   const [{ isOverDiamondsDown }, diamondsDropDown] = useDrop({
     accept: ItemTypes.DIAMONDS,
     drop: (item, monitor) => {
-      dispatch(
-        decrement(item.card),
-        diamondsDown.length === 13 ? dispatch(pileFinish()) : dispatch(update())
-      );
+      dispatch(decrement(item.card));
     },
     collect: (monitor) => ({
       isOverDiamondsDown: !!monitor.isOver(),
@@ -88,10 +70,7 @@ const Aggregate = (props) => {
   const [{ isOverSpades }, spadesDrop] = useDrop({
     accept: ItemTypes.SPADES,
     drop: (item, monitor) => {
-      dispatch(
-        increment(item.card),
-        spades.length === 13 ? dispatch(pileFinish()) : dispatch(update())
-      );
+      dispatch(increment(item.card));
     },
     collect: (monitor) => ({
       isOverSpades: !!monitor.isOver(),
@@ -101,10 +80,7 @@ const Aggregate = (props) => {
   const [{ isOverSpadesDown }, spadesDropDown] = useDrop({
     accept: ItemTypes.SPADES,
     drop: (item, monitor) => {
-      dispatch(
-        decrement(item.card),
-        spadesDown.length === 13 ? dispatch(pileFinish()) : dispatch(update())
-      );
+      dispatch(decrement(item.card));
     },
     collect: (monitor) => ({
       isOverSpadesDown: !!monitor.isOver(),

@@ -43,7 +43,7 @@ const incrementPile = (
     let pileList = state.get(pile);
     for (let i = 0; i < pileList.length; i++) {
       if (pileList[i].cardNum === cardNum) {
-        if (state.get(suit).length === 13) {
+        if (state.get(suit).length === 12) {
           return state
             .deleteIn([pile, i])
             .updateIn([suit], (list) => [...list, card])
@@ -72,7 +72,7 @@ const decrementPile = (
     let pileList = state.get(pile);
     for (let i = 0; i < pileList.length; i++) {
       if (pileList[i].cardNum === cardNum) {
-        if (state.get(`${suit}Down`).length === 13) {
+        if (state.get(`${suit}Down`).length === 12) {
           return state
             .deleteIn([pile, i])
             .updateIn([`${suit}Down`], (list) => [...list, card])
@@ -122,10 +122,6 @@ const gameReducer = (state = gameState, action) => {
       return decrementPile(state, action.payload);
     case "DRAW_STACK":
       return handleDrawStack(state);
-    case "PILE_FINISH":
-      return state.update("score", (score) => score - 6);
-    case "UPDATE":
-      return state.update("score", (score) => score - 1);
     case "API_CALL_START":
       return state.update("isLoading", (bool) => !bool);
     case "API_CALL_SUCCESS":
