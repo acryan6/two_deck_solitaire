@@ -16,13 +16,13 @@ const Tutorial = () => (
       id="tutorial"
       tabIndex="-1"
       role="dialog"
-      aria-labelledby="exampleModalLabel"
+      aria-labelledby="ModalCarouselLabel"
       aria-hidden="true"
     >
       <div className="modal-dialog" role="document">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title" id="exampleModalLabel">
+            <h5 className="modal-title" id="ModalCarouselLabel">
               Modal title
             </h5>
             <button
@@ -34,7 +34,13 @@ const Tutorial = () => (
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div className="modal-body">...</div>
+          <div className="modal-body">
+            <div
+              id="carousel-modal-demo"
+              class="carousel slide"
+              data-ride="carousel"
+            ></div>
+          </div>
           <div className="modal-footer">
             <button
               type="button"
