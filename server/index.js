@@ -40,6 +40,8 @@ app.get("/api/cards", function (req, res) {
 //     .catch((err) => console.log(err));
 // });
 
-app.listen(3000, function () {
+let port = process.env.PORT || 3000;
+
+app.listen(port, function () {
   console.log("listening on port 3000!");
 });
