@@ -23,7 +23,7 @@ const Tutorial = () => (
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title" id="ModalCarouselLabel">
-              Modal title
+              Tutorial
             </h5>
             <button
               type="button"
@@ -39,7 +39,14 @@ const Tutorial = () => (
               id="carousel-modal-demo"
               class="carousel slide"
               data-ride="carousel"
-            ></div>
+            >
+              <p>
+                Tutorial TBD...Double click the draw pile to begin. Double click
+                or drag and drop cards to put in their piles. For each suit,
+                there is one pile going up from Ace to King, and one pile going
+                down from King to Ace.
+              </p>
+            </div>
           </div>
           <div className="modal-footer">
             <button

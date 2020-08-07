@@ -65,3 +65,8 @@ body {
   height: 12em;
   max-width: 8em;
 }
+
+.modal-title,
+.modal-body {
+  color: black;
+}
