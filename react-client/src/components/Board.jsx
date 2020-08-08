@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import drawStackImg from "./Card_back.png";
+import drawStackImg from "./card_back.jpeg";
 import Card from "./Card.jsx";
 import { ItemTypes } from "../utils/items";
 import { increment, drawStack } from "../actions";
