@@ -44,7 +44,12 @@ const Tutorial = () => (
                 Tutorial TBD...Double click the draw pile to begin. Double click
                 or drag and drop cards to put in their piles. For each suit,
                 there is one pile going up from Ace to King, and one pile going
-                down from King to Ace.
+                down from King to Ace. On events where a choice must be made
+                about which pile to drop to, a double click will not work.
+                Instead, drag and drop the card to your choice. For instance, if
+                you are currently on the 10 of hearts going down and 8 of hearts
+                going up, a double click will not work. Drag and drop to either
+                continue the pile going up or down.
               </p>
             </div>
           </div>
