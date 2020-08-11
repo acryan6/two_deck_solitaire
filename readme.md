@@ -25,10 +25,12 @@ These scenarios are additive. For instance, if a King is placed in the King pile
 
 `Placing into aggregate piles`
 
-Cards may be placed into the aggregate piles to complete the game objective in two ways
+Cards may be placed into the aggregate piles to complete the game objective in two ways:
 
 - Any card on top of the board piles is fair game to move into your aggregate piles
 - Any card in your hand is fair game (explained below)
+
+Game-play is designed to accept either double clicking on the card you want to put into an aggregate pile or by dragging the card and dropping it into the aggregate pile. When you come to a point where you must choose whether you want to continue the pile going up or down (e.g. if you have an 8 going down and a 6 going up), double clicking will not work. Instead, drag and drop the card to the pile you want to continue.
 
 `Drawing a card`
 
