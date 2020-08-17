@@ -1,3 +1,5 @@
+![Screenshot](react-client/src/components/Gameplay.png)
+
 <h2>Summary</h2>
 
 Mini-moo is a two-deck solitaire game built with React, React-dnd, Redux, Immutable.js, Node, Express, and Deck of Cards API.
