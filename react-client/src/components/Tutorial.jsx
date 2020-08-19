@@ -1,4 +1,7 @@
 import React from "react";
+import GameplayAgg from "./Gameplay_Agg.png";
+import GameplayHand from "./Gameplay_Hand.png";
+import GameplayBoard from "./Gameplay_Board.png";
 
 const Tutorial = () => (
   <div>
@@ -41,15 +44,29 @@ const Tutorial = () => (
               data-ride="carousel"
             >
               <p>
-                Tutorial TBD...Double click the draw pile to begin. Double click
-                or drag and drop cards to put in their piles. For each suit,
-                there is one pile going up from Ace to King, and one pile going
-                down from King to Ace. On events where a choice must be made
-                about which pile to drop to, a double click will not work.
-                Instead, drag and drop the card to your choice. For instance, if
-                you are currently on the 10 of hearts going down and 8 of hearts
-                going up, a double click will not work. Drag and drop to either
-                continue the pile going up or down.
+                In depth tutorial TBD...Double click the draw pile to begin.
+                Double click or drag and drop cards to put in their piles. For
+                each suit, there is one pile going up from Ace to King, and one
+                pile going down from King to Ace, shown below{" "}
+              </p>
+              <img src={GameplayAgg} width="100%" />
+              <p>
+                Your hand will appear after double clicking the draw pile in
+                between the aggregate piles and the game board.
+              </p>
+              <img src={GameplayHand} width="100%" />
+              <p>
+                The game board represents piles from Ace to King, with the draw
+                stack in the middle of the second row of the game board.{" "}
+              </p>
+              <img src={GameplayBoard} width="100%" />
+              <p>
+                On events where a choice must be made about which pile to drop
+                to, a double click will not work. Instead, drag and drop the
+                card to your choice. For instance, if you are currently on the
+                10 of hearts going down and 8 of hearts going up, a double click
+                will not work. Drag and drop to either continue the pile going
+                up or down.
               </p>
             </div>
           </div>
