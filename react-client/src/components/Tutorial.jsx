@@ -40,7 +40,7 @@ const Tutorial = () => (
           <div className="modal-body">
             <div
               id="carousel-modal-demo"
-              class="carousel slide"
+              className="carousel slide"
               data-ride="carousel"
             >
               <p>

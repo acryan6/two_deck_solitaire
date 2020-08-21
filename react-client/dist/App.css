@@ -5,6 +5,14 @@ body {
   width: 95vw;
 }
 
+h1 {
+  font-size: 2.5vw;
+}
+
+h5 {
+  font-size: 1.25vw;
+}
+
 .top-bar {
   margin-top: 2em;
   margin-bottom: 2em;

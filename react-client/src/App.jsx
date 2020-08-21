@@ -14,7 +14,10 @@ const App = () => {
   ]);
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="browser">
+      <div
+        className="h-100 d-flex justify-content-center align-items-center"
+        style={{ flexDirection: "column", height: "90vw" }}
+      >
         <div className="container top-bar">
           <div className="row">
             <div className="col-sm title-block">
