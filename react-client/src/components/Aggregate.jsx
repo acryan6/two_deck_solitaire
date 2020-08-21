@@ -123,9 +123,9 @@ const Aggregate = (props) => {
   );
 
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-sm">
+    <div className="container h-20">
+      <div className="row h-100">
+        <div className="col-sm h-100">
           <div
             className="hearts empty-pile"
             ref={heartsDropDown}

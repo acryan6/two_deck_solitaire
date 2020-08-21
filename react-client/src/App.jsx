@@ -15,18 +15,18 @@ const App = () => {
   return (
     <DndProvider backend={HTML5Backend}>
       <div
-        className="h-100 d-flex justify-content-center align-items-center"
-        style={{ flexDirection: "column", height: "90vw" }}
+        className="h-100 d-flex align-items-center"
+        style={{ flexDirection: "column" }}
       >
-        <div className="container top-bar">
-          <div className="row">
-            <div className="col-sm title-block">
+        <div className="container top-bar h-20">
+          <div className="row h-100">
+            <div className="col-sm title-block h-100">
               <h1>Mini-Moo</h1>
               <h5>A Form of Devil's Solitaire</h5>
               {drawLength === 0 ? <p>Your score is {score}</p> : null}
               {score >= 100 ? <Tutorial /> : null}
             </div>
-            <div className="col-sm">
+            <div className="col-sm h-100">
               <Aggregate />
             </div>
           </div>

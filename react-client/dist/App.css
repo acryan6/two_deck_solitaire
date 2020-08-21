@@ -1,8 +1,7 @@
 body {
   background: linear-gradient(to bottom, #1a4a1c, #308834 600px);
   color: #fff;
-  height: 95vw;
-  width: 95vw;
+  /* width: 95vw; */
 }
 
 h1 {
@@ -18,6 +17,10 @@ h5 {
   margin-bottom: 2em;
   max-width: 70vw;
 } */
+
+#app {
+  height: 90vw;
+}
 
 .title-block {
   max-width: 20vw;
