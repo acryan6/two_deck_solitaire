@@ -10,6 +10,7 @@ const Tutorial = () => (
       className="btn btn-primary"
       data-toggle="modal"
       data-target="#tutorial"
+      style={{ fontSize: "1vw" }}
     >
       Click for tutorial
     </button>
