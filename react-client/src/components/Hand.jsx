@@ -17,7 +17,7 @@ const Hand = (props) => {
   });
 
   return (
-    <div className="container">
+    <div className="container container-hand">
       <div className="row hand-row">
         {hand
           ? hand.map((card, index) => {

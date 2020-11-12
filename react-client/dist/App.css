@@ -22,6 +22,10 @@ h5 {
   max-height: 90vw;
 }
 
+.container-hand {
+  height: 176px;
+}
+
 .title-block {
   max-width: 20vw;
   padding-top: 2em;
